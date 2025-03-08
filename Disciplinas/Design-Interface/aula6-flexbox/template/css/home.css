@@ -1,0 +1,10 @@
+@import url('./geral.css');
+
+/* Código específico da página produtos */
+
+main h1 {
+  text-decoration:underline;
+}
+main p {
+  text-indent: 30px;
+}

@@ -1,0 +1,18 @@
+header {
+    position: sticky;
+    /* position: fixed; */
+    top: 5px;
+    left: 5px;
+    width: 1000px;
+    height: 100px;
+    border: 3px solid #73AD21;
+    background-color:green ;
+    opacity: 0.5;
+  }
+ 
+  .itens{
+    width: 1000px;
+    height: 1000px;
+    border: 3px solid red;
+    margin-top:30px
+  }

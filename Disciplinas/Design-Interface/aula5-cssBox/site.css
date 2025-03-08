@@ -1,0 +1,90 @@
+/* My reset */
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  vertical-align: baseline;
+  list-style: none;
+}
+
+/* ********** */
+
+.tudo {
+  margin-left: auto;
+  margin-right: auto;
+  width: 94vw;
+  padding: 1vw;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+  border: 1vw solid red;
+}
+
+header {
+  height: 12vw;
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1vw;
+  padding: 1vw;
+  border: 1vw solid blue;
+}
+.logo {
+  height: 8vw;
+  width: 14vw;
+  display: inline-block;
+  margin-right: 1vw;
+  border: 1vw solid black;
+}
+.banner {
+  height: 8vw;
+  width: 68vw;
+  display: inline-block;
+  border: 1vw solid black;
+}
+.meio {
+  height: 44vw;
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1vw;
+  padding: 1vw;
+  border: 1vw solid blue;
+}
+nav {
+  height: 40vw;
+  width: 15vw;
+  display: inline-block;
+  margin-right: 1vw;
+  border: 1vw black solid;
+}
+section {
+  height: 40vw;
+  width: 52vw;
+  display: inline-block;
+  margin-right: 1vw;
+  border: 1vw solid black;
+}
+aside {
+  height: 40vw;
+  width: 14vw;
+  display: inline-block;
+  border: 1vw solid black;
+}
+footer {
+  height: 10vw;
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1vw;
+  border: 1vw solid blue;
+}

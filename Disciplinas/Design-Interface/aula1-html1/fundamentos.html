@@ -1,0 +1,140 @@
+<!-- FUNDAMENTOS DE HMTL5 -->
+
+<!-- Apertar "!"+Tab no VS Code, monta a estrutura básica do HTML5 -->
+ <!DOCTYPE html> <!--Tipo de documento-->
+ <html lang="pt-BR"> <!-- Linguagem da página-->
+    <head>
+        <meta charset="UTF-8"> <!--Referência de caracteres-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Importância para responsividade-->
+        <title>Document</title> <!-- Título da Página-->
+    </head>
+    <body>
+    
+    </body>
+ </html>
+
+<!-- Apertar Ctrl+K V com o HTML Preview do VS Code abrirá o Preview -->
+<!-- HMTL é linguagem de marcação e pode ser salva em .hmtl e .htm -->
+
+<!-- HTML é estruturado por TAGS -->
+
+<b>Olá</b> <!-- BOLD -->
+<i>Olá</i> <!-- ITALIC -->
+<u>Olá</u> <!-- SUBLINHADO-->
+<i><b>Olá</b></i> <!-- Combinação-->
+
+<br> <!-- Novo parágrafo-->
+
+<hr size="5px"> <!-- Linha separadora-->
+<hr size="1px">
+<hr size="20px">
+
+<h1>Olá</h1> <!--Título-->
+<h2>Olá</h2>
+<h3>Olá</h3>
+<h4>Olá</h4>
+<h5>Olá</h5>
+<h6>Olá</h6>
+
+<p>Era uma vez um jogo.</p> <!-- Parágrafo-->
+
+<!-- LISTAS -->
+<!-- ul = lista desordenada -->
+<!-- ol = lista ordenada -->
+<!-- li = item de uma lista -->
+<ul> <!--pontuada-->
+    <li>Um</li>
+    <li>Dois</li>
+</ul>
+<br>
+<ol> <!-- Numerada-->
+    <li>Um</li>
+    <li>Dois</li>
+</ol>
+
+<!--Lista Encadeada-->
+<ul>
+    <li>
+        <p>Era uma vez um jogo.</p>
+    </li>
+    <li>
+        <p>Números</p>
+        <ol>
+            <li>Um</li>
+            <li>Dois</li>
+        </ol>
+    </li>
+</ul>
+
+<!-- Tabelas em HTML -->
+<!-- tablerow - tr -> linha  -->
+<!-- td -> coluna -->
+<table border="1px">
+    <tr>
+        <td>Linha1Coluna1</td>
+        <td>Linha1Coluna2</td>
+        <td>Linha1Coluna3</td>
+    </tr>
+    <tr>
+        <td>Linha2Coluna1</td>
+        <td>Linha2Coluna2</td>
+        <td>Linha2Coluna3</td>
+    </tr>
+</table>
+<br>
+
+<!-- Mesclar Colunas -->
+<table border="1px">
+    <tr>
+        <td colspan="2">Números</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2</td>
+    </tr>
+</table>
+
+<!-- Mesclar Linhas -->
+<table border="1px">
+    <tr>
+        <td rowspan="2">1</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>3</td>
+    </tr>
+</table>
+<br><br>
+
+<!-- Tabela Estruturada - MELHOR FORMA -->
+<table border="1px">
+    <caption>Lucro por Mês</caption>
+    <thead>
+        <tr>
+            <th>Mês</th>
+            <th>Lucro</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Janeiro</td>
+            <td>R$200</td>
+        </tr>
+        <tr>
+            <td>Fevereiro</td>
+            <td>R$50</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Total</td>
+            <td>R$250</td>
+        </tr>
+    </tfoot>
+</table>
+
+<!-- thead = cabeçalho tabela -->
+<!-- th = título da coluna -->
+<!-- tbody = corpo da tabela -->
+<!-- tfoot = rodapé da tabela -->

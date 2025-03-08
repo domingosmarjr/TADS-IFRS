@@ -1,0 +1,63 @@
+/* Estrutura Básica do CSS */
+/* Seletor {Propriedade: Valor} */
+
+H1 {color:red}
+
+/* Vários Seletores ao mesmo tempo */
+H2, H3, H4 {color:orange}
+
+/* Várias propriedades em um só comando */
+H1 {font-size: 12pt; font-family: Helvetica;}
+
+/* Seletor dentro de seletor*/
+P B {color:blueviolet}
+/* somente o bold de parágrafo mudará cor */
+
+/* Referenciando Classe */
+H1.alerta {color:chartreuse}
+
+/* Referenciando Identificador */
+#identificador1 {color:blueviolet}
+
+/* Pseudo Elementos no CSS */
+A:visited {color:red} /*pinta de vermelho quando visitar*/
+A:link {color:deeppink}
+
+/* Herança e filhos */
+/* Todos elementos terão característica do pai */
+BODY {color:red}
+/* Por que não pintou o H1 de vermelho?
+   A explicação é porque o H1 é específico e 
+   o navegador prioriza específicos ao geral.
+*/
+
+/* Seletor Global */
+* {font-style: italic;}
+
+/* Unidades de Medida no CSS */
+P {font-size: 18px;}
+/* 23in -> polegada 
+   23cm -> centímetro
+   230mm-> milímetro
+   200% -> porcentagem
+*/
+
+/* FONTES */
+/* 1 -  Colocar conjunto de web safe fonts */
+/* 2 - Importar fonte externa com importação delas no INÍCIO DO CSS */
+@import url(https://fonts.googleapis.com/css2?family=Roboto&display=swap);
+/* 3 - Baixar e referenciar a fonte */
+@font-face {
+    font-family: 'Calib';
+    src: url('fonts/Calib.eot');
+    src: url('fonts/Calib.eot?#iefix') format('embedded-opentype'),
+    url('fonts/Calib.woff') format('woff'),
+    url('fonts/Calib.ttf') format('truetype'),
+    url('fonts/Calib.svg#Calibri') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.aviso{
+    font-family: "Calib";
+}

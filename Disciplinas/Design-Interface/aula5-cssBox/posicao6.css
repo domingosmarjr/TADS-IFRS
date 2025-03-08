@@ -1,0 +1,16 @@
+.itemUm { 
+    background-color: aqua;
+    /*position: absolute;
+    position: relative;
+    left:40%  */
+}
+.itemDois { 
+    background-color: orange
+}
+.itemTres { 
+    background-color: palegreen;}
+
+.itens {
+    width:30%;
+    height: 50px;
+}

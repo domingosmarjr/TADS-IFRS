@@ -1,0 +1,76 @@
+/* @import url(../trabalho2-domingos/styles/mainStyle.css); */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    border: 1px solid black;
+    margin: 3px;
+    padding: 3px;
+}
+
+header {
+    border: 1px solid black;
+    margin: 3px;
+    padding: 3px;
+    background-color: orange;
+    position:sticky;
+}
+
+nav {
+    border: 1px solid black;
+    margin: 3px;
+    padding: 3px;
+    background-color: orangered;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1px;
+}
+
+.menuItem {
+    border: 1px solid black;
+    margin: 3px;
+    padding: 3px;
+    visibility: visible;
+    background-color: rgb(247, 185, 162);
+    order: 2;
+    flex-grow: 1;
+    flex-shrink: 1;
+    align-self: flex-end;
+}
+
+main {
+    border: 1px solid black;
+    margin: 3px;
+    padding: 3px;
+    background-color: rgb(255, 117, 66);
+    /* background-image: url(./nave.jpg); */
+    /* background-repeat: repeat; */
+    /* background-size: cover; */
+}
+
+section {
+    display: inline-block;
+    border: 1px solid black;
+    margin: 3px;
+    padding: 3px;
+    background-color: rgb(247, 185, 162);    
+}
+
+aside {
+    border: 1px solid black;
+    margin: 3px;
+    padding: 3px;
+    background-color: orangered;
+    display: inline-block;
+}
+
+footer {
+    border: 1px solid black;
+    margin: 3px;
+    padding: 3px;
+    background-color: orange;
+}

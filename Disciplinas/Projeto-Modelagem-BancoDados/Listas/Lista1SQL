@@ -1,0 +1,129 @@
+Lista de Exercícios de SQL Básico
+Exercícios de Consulta (SELECT)
+
+    Selecione todos os usuários cadastrados na tabela usuario.
+
+    Selecione todos os artigos da tabela artigo ordenados pelo título em ordem alfabética.
+
+    Selecione todos os usuários que têm o bairro preenchido.
+
+    Selecione todos os artigos publicados entre duas datas específicas.
+
+    Selecione todos os usuários que nasceram antes do ano 2000.
+
+    Selecione todos os artigos que pertencem à categoria com ID 1.
+
+    Selecione todos os usuários cujos nomes começam com a letra 'I'.
+
+    Selecione todos os telefones associados ao usuário com ID 1.
+
+    Selecione todos os artigos que contêm a palavra 'texto' no campo texto.
+
+    Selecione todos os usuários que têm o CEP '12345678'.
+    
+Exercícios de Atualização (UPDATE)
+
+    Atualize o nome do usuário com ID 1 para 'Igor Pereira'.
+
+    Atualize o bairro do usuário com ID 1 para 'Centro'.
+
+    Atualize o título do artigo com ID 1 para 'Novo Título'.
+
+    Atualize a senha do usuário com email 'igor.pereira@riogrande.ifrs.edu.br' para 'nova_senha'.
+
+    Atualize o número de telefone do telefone com ID 1 para '987654321'.
+
+Exercícios de Deleção (DELETE)
+
+    Delete o usuário com ID 1.
+
+    Delete todos os artigos que foram publicados antes de 2024.
+
+    Delete todos os comentários associados ao artigo com ID 1.
+
+    Delete todas as curtidas associadas ao usuário com ID 1.
+
+    Delete todos os telefones associados ao usuário com ID 1.
+
+Exercícios de DDL (Data Definition Language)
+
+    Adicione uma coluna telefone na tabela usuario.
+
+    Remova a coluna bairro da tabela usuario.
+
+    Crie uma nova tabela chamada tag com as colunas id (serial, chave primária) e nome (text, não nulo).
+
+    Adicione uma restrição de unicidade na coluna email da tabela usuario.
+
+    Renomeie a tabela telefone para contato_telefone.
+
+Exercícios de Consulta (SELECT)
+
+    Selecione todos os usuários que se registraram no sistema nos últimos 30 dias.
+
+    Selecione todos os artigos que foram publicados no mês de janeiro de 2024.
+
+    Selecione todos os usuários que têm um email que termina com 'ifrs.edu.br'.
+
+    Selecione todos os artigos cujo título contém a palavra 'tutorial'.
+
+    Selecione todos os usuários que têm um número de telefone cadastrado.
+
+    Selecione todos os artigos que foram publicados no ano de 2024.
+
+    Selecione todos os usuários que têm o nome 'Ana' ou 'Maria'.
+
+    Selecione todos os artigos que foram publicados após as 18:00.
+
+    Selecione todos os usuários que têm um CEP que começa com '123'.
+
+    Selecione todos os artigos que foram publicados nos últimos 7 dias.
+
+Exercícios de Atualização (UPDATE)
+
+    Atualize o email do usuário com ID 1 para 'novo.email@example.com'.
+
+    Atualize o título do artigo com ID 1 para 'Título Atualizado'.
+
+    Atualize o número de telefone do telefone com ID 2 para '123456789'.
+
+    Atualize a data de registro do usuário com ID 1 para a data atual.
+
+    Atualize o conteúdo do comentário com ID 1 para 'Conteúdo Atualizado'.
+
+Exercícios de Deleção (DELETE)
+
+    Delete todos os usuários que não têm um email cadastrado.
+
+    Delete todos os artigos que foram publicados antes de 2023.
+
+    Delete todos os comentários que foram feitos no artigo com ID 1.
+
+    Delete todas as curtidas feitas pelo usuário com ID 1.
+
+    Delete todos os telefones que não estão associados a nenhum usuário.
+
+xercícios de Atualização (UPDATE)
+
+    Atualize o email do usuário com ID 1 para 'novo.email@example.com'.
+
+    Atualize o título do artigo com ID 1 para 'Título Atualizado'.
+
+    Atualize o número de telefone do telefone com ID 2 para '123456789'.
+
+    Atualize a data de registro do usuário com ID 1 para a data atual.
+
+    Atualize o conteúdo do comentário com ID 1 para 'Conteúdo Atualizado'.
+
+Exercícios de DDL (Data Definition Language)
+
+    Adicione uma coluna data_atualizacao na tabela artigo com o tipo timestamp.
+
+    Remova a coluna nro da tabela usuario.
+
+    Crie uma nova tabela chamada tag_artigo com as colunas id (serial, chave primária), artigo_id (integer, chave estrangeira) e tag_id (integer, chave estrangeira).
+
+    Adicione uma restrição de não nulo na coluna bairro da tabela usuario.
+
+    Renomeie a tabela curtida para likes.
+

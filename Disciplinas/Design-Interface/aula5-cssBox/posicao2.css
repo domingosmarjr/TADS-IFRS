@@ -1,0 +1,18 @@
+ 
+.itemUm { 
+    background-color: aqua;
+}
+.itemDois { 
+    background-color: orange
+}
+.itemTres { 
+    background-color: palegreen;}
+
+.itens {
+     display:inline; 
+    /* display:inline-block; */
+   
+    width:40%;
+    height: 50px;
+    /* margin:10px */
+}

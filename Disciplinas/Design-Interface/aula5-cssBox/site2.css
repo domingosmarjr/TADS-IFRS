@@ -1,0 +1,90 @@
+/* My reset */
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  vertical-align: baseline;
+  list-style: none;
+}
+
+/* ********** */
+
+.tudo {
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+  padding: 4px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid black;
+}
+
+header {
+  height: 100px;
+  width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1px;
+  padding: 4px;
+  border: 1px solid black;
+}
+.logo {
+  height: 90px;
+  width: 80px;
+  display: inline-block;
+  margin-right: 4px;
+  border: 1px solid black;
+}
+.banner {
+  height: 90px;
+  width: 670px;
+  display: inline-block;
+  border: 1px solid black;
+}
+.meio {
+  height: 420px;
+  width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 4px;
+  padding: 4px;
+  border: 1px solid black;
+}
+nav {
+  height: 400px;
+  width: 155px;
+  display: inline-block;
+  margin-right: 4px;
+  border: 1px black solid;
+}
+section {
+  height: 400px;
+  width: 430px;
+  display: inline-block;
+  margin-right: 4px;
+  border: 1px solid black;
+}
+aside {
+  height: 400px;
+  width: 155px;
+  display: inline-block;
+  border: 1px solid black;
+}
+footer {
+  height: 100px;
+  width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 4px;
+  border: 1px solid black;
+}

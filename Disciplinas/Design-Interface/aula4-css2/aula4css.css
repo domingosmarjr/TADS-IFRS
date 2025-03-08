@@ -1,0 +1,31 @@
+/* Modelo de Caixa do CSS */
+/* 
+    Margin (distância da borda a próxima caixa)
+        Border (borda)
+            Padding (distância do conteúdo da borda)
+                Content (conteúdo do elemento)
+            Padding
+        Border
+    Margin
+*/
+
+/* 4 Lados das Caixas - Altura e Largura*/
+/* 
+    Left, Right, Top, Right
+    Width e Height
+*/
+
+/* Mudar parâmetros de borda num só item */
+H1 { 
+    border: 5px solid red;
+    border-left-color: blue;
+
+    margin: 2px;
+
+    padding: 5px;
+}
+
+P {
+    border: 5px solid blue;
+    margin: 2px;
+}

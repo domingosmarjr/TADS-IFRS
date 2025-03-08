@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Figuras</title>
+    <style type="text/css">
+      * {box-sizing: border-box;}
+
+      .um {
+        background-color: aqua;
+      }
+      .dois{
+        background-color: aqua;
+        border:2px solid blue;
+      }
+      .tres{
+        background-color: aqua;
+        border:2px solid blue;
+        padding:4px;
+      }
+      .quatro {
+        background-color: aqua;
+        border:2px solid blue;
+        padding:4px;
+        margin: 4px;
+      }
+      .cinco {
+        background-color: aqua;
+        border:2px dotted blue;
+        padding-left:20px;
+        
+      }
+      .seis {
+        background-color: aqua;
+        border:2px solid blue;
+        width: 100px;
+        height:80px;
+      }
+      .sete {
+        background-color: aqua;
+        border:2px solid blue;
+        width: 100px;
+        height:80px;
+        padding:6px;
+        margin: 6px;
+
+      }
+
+      .oito{
+        border:2px solid blue;
+        margin:4px;
+        background-image: url("https://logodownload.org/wp-content/uploads/2017/10/w3c-logo-6.png"); 
+      }
+
+      .nove{
+        border:2px solid blue;
+        margin:4px;
+        background-image: url("https://logodownload.org/wp-content/uploads/2017/10/w3c-logo-6.png"); 
+        width: 50vw;
+        height:50vw;
+      }
+
+      .dez
+      {
+        border:2px solid blue;
+        margin:4px;
+        width: 50vw;
+        height:50vw;
+        background-image: url("https://logodownload.org/wp-content/uploads/2017/10/w3c-logo-6.png"); 
+        background-repeat: no-repeat;
+        background-size: contain;
+        /* background-size: cover; */
+        /* background-size: 25vw auto; */
+        /* background-position: 10vw 10vw; */
+        
+      }
+
+/* Leitores de tela e robos da internet(SEO)não leem css. 
+Quando a imagem é de fundo, objetivo só estético, deve-se
+usar imagem no css (com background-image).
+
+Quando a imagem passa alguma informação que deva ser lida
+por leitores de telas e robos SEO deve-se usar o img no html e. 
+no css ajustar sua posição: width:100% 
+A imagem adapta-se ao tamanho que pode ocupar. 
+ */
+
+      .onze
+      {
+        border:2px solid blue;
+        margin:4px;
+        width: 50vw;
+        height:50vw; 
+            
+      }
+      .onze img{
+        width:100%; 
+      }
+      
+
+           
+    </style>
+  </head>
+  <body>
+    
+     
+
+        <div class="um">Um</div>
+        <div class="dois">Dois</div>
+        <div class="tres">Tres</div>
+        <div class="quatro">Quatro</div>
+        <div class="cinco">Cinco</div>
+        <div class="seis">Seis</div>
+        <div class="sete">Sete</div>
+
+        <div class="oito">Oito</div>
+        <div class="nove">Nove</div>
+        <div class="dez">Dez</div>
+        
+        <div class="onze">Onze
+          <img src="https://logodownload.org/wp-content/uploads/2017/10/w3c-logo-6.png">
+        </div>
+    
+  </body>
+</html>

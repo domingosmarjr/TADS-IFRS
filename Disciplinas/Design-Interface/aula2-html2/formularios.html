@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- FORMULÁRIOS -->
+    <!-- Possuem métodos diversos e action refere-se aonde vai -->
+    <!-- input possui diversos types -->
+    <!-- name do input é o seu nome de variável!!! -->
+    <form method="post" action="recebe.php">
+        <!-- action = quem irá receber as infos no PHP/Node -->
+        Nome:<input type="text" name="nome"><br>
+        Senha:<input type="password" name="senha"><br>
+        <input type="hidden" name="user" value="14">
+        Comentário:<br>
+        <textarea name="cometario" cols="10" rows="5">
+            Digite a sua opinião.
+        </textarea><br>
+        <input type="submit" name="enviar" value="Enviar"><br>
+    </form>
+    <br><br><br>
+
+    <!-- INPUT RADIO -->
+    <h2>Time:</h2>
+    <input type="radio" name="time" value="Gremio">Grêmio<br>
+    <input type="radio" name="time" value="Inter">Inter<br>
+    <br>
+
+    <!-- INPUT CHECKBOX -->
+    <h2>Sistema Operacional:</h2>
+    <input type="checkbox" name="sistopera" value="Linux">Linux<br>
+    <input type="checkbox" name="sistopera" value="Windows">Windows<br>
+
+    <!-- SELEÇÃO -->
+    <h2>Disciplinas</h2>
+    <select name="disciplinas">
+        <option>Lógica</option>
+        <option>Interface Web</option>
+    </select><br><br><br>
+
+    <!-- OUTROS TIPOS DE INPUT -->
+    Telefone:<input type="tel" name="telefone"><br>
+    Procurar: <input type="search" name="procurar"><br>
+    Email: <input type="email" name="email"><br>
+    Link: <input type="url" name="url"><br>
+    Data: <input type="date" name="datanascimento"><br>
+    Número: <input type="number" name="num"><br>
+    Cor: <input type="color" name="cor"><br>
+    Upload: <input type="file" multiple name="arq"><br>
+    Intervalo: <input type="range" min="0" max="100" value="50" name="intervalo"><br>
+
+    <!-- ATRIBUTOS DE FORMULÁRIOS -->
+    Nome: <input type="text" name="nome" size="10" maxlength="10" required><br>
+    <!--        tipoinput   nomevariavel atributos                obrigatório! -->
+    Senha: <input type="password" name="senha" placeholder="Digite a senha" maxlength="10" autofocus><br>
+    <!--        tipoinput   nomevariavel       texto na caixa                             começa aqui -->
+    <input type="checkbox" name="so" checked value="lin">Linux<br>
+    <input type="checkbox" name="so" value="win">Windows<br>
+    <!-- checked garante que já venha checado de anterior -->
+    <br><br>
+
+    Nome: <input type="text" name="nome" size="10" disabled><br>
+    <!-- disabled = impede de escrever nele -->
+    CPF: <input type="text" name="cpf" title="Preencha CPF" pattern="^[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}/"><br>
+    <!-- Possível usar PATTERNS (verificar CPF válido) -->
+    <br><br><br>
+
+    <!-- FORMULÁRIO ESTRUTURADO -->
+    <form>
+        <fieldset>
+            <legend><p>Dados:</p></legend>
+
+            <label for="n1">Nome:</label>
+            <input type="text" id="n1"><br>
+            <!-- id referenciar o label -->
+            <!-- ID e FOR devem ser IGUAIS! -->
+            <label for="s1">Senha:</label>
+            <input type="text" id="s1"><br><br>
+
+            <label for="gremio">Gremio</label>
+            <input type="radio" name="time" id="gremio" value="gre">
+            <br>
+            <label for="inter">Inter</label>
+            <input type="radio" name="time" id="inter" value="int">
+            <br>
+
+            <input type="submit" value="enviar"><br>
+        </fieldset>
+    </form>
+
+    <!-- TAG BUTTON -->
+    <button type="submit">Clique Aqui</button>
+    <button type="reset">Resetar</button>
+    <!-- Ações de botão podem ser atribuídas com JS -->
+</body>
+</html>
