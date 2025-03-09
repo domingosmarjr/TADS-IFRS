@@ -10,7 +10,7 @@ JAVASCRIPT
 Instalar JavaScript no Linux:
 sudo apt install nodejs
 
-Entrar no Node no terminal:
+Entrar no Node no terminal:                                                                             
 node
 
 Sair do Node no terminal:
