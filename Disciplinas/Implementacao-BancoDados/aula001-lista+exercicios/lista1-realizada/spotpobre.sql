@@ -136,54 +136,121 @@ SELECT musica.titulo, musica.duracao FROM musica WHERE duracao>=100 AND duracao<
 SELECT musica.titulo, musica.duracao FROM musica WHERE NOT(duracao>=100 AND duracao<=200);
 
 -- 11) Retorne _artistas_ que possuem nome e nome artístico <!--(Dica: IS NULL)-->
+SELECT nome, nome_artistico FROM artista WHERE (nome IS NOT NULL AND nome_artistico IS NOT NULL);
 
 -- 12) Retorne, preferencialmente, o nome de todos os artistas. Caso um determinado artista não tenha cadastrado seu nome, retorne na mesma consulta seu nome artístico <!--select coalesce(nome, nome_artistico) from artista;-->
+INSERT INTO artista (nome) VALUES ('Yago');
+ALTER TABLE artista ALTER COLUMN nome_artistico DROP NOT NULL;
+SELECT coalesce(nome, nome_artistico) AS nome FROM artista;
 
 -- 13) Retorne o título dos _álbuns_ lançados em 2023 <!--(Dica: EXTRACT(YEAR FROM data_lancamento))-->
+INSERT INTO album (titulo, data_lancamento, artista_id) VALUES ('Emptiness Machine','2023/10/10', '2');
+SELECT * FROM album WHERE EXTRACT (YEAR FROM data_lancamento) = '2023';
 
 -- 14) Retorne o _nome_ das _playlists_ que foram criadas hoje
+INSERT INTO playlist (nome, usuario_id) VALUES ('Relax', '1');
+SELECT nome FROM playlist WHERE extract (day from data_hora) = extract (day from current_date);
 
 -- 15) Atualize todos os _nomes_ dos _artistas_ (_nome_ e _nome_artistico_) para maiúsculo
+UPDATE artista SET nome = upper(nome), nome_artistico = upper(nome_artistico);
 
 -- 16) Coloque uma verificação para a coluna _duracao_ (tabela _musica_) para que toda duração tenha mais de 0 segundos
+ALTER TABLE musica ADD CONSTRAINT check_duracao CHECK (duracao > 0);
 
 -- 17) Adicione uma restrição _UNIQUE_ para a coluna _email_ da tabela _usuario_
+ALTER TABLE usuario DROP CONSTRAINT usuario_email_key;
+ALTER TABLE usuario ADD CONSTRAINT usuario_email_key UNIQUE(email);
 
 -- 18) Retorne somente os _artistas_ que o nome artístico começa com "Leo" (Ex: Leo Santana, Leonardo e etc.)
+INSERT INTO artista (nome, nome_artistico) VALUES ('Leonardo', 'Leozinho');
+SELECT nome_artistico FROM artista WHERE nome LIKE 'Leo%';
 
 -- 19) Retorne o _título_ dos _álbuns_ que estão fazendo aniversário neste mês
+INSERT INTO album (titulo, data_lancamento, artista_id) VALUES ('Leo e Leandro','2024/03/10','9');
+SELECT titulo, data_lancamento FROM album WHERE EXTRACT (MONTH FROM data_lancamento) = EXTRACT (MONTH FROM current_date);
 
 -- 20) Retorne o _título_ dos _álbuns_ lançados no segundo semestre do ano passado (de julho de 2022 a dezembro de 2022)
+INSERT INTO album (titulo, data_lancamento, artista_id) VALUES ('Arrasa Corações', '2022/10/01', '9');
+SELECT titulo, to_char(data_lancamento,'DD/MM/YYYY') AS data FROM album WHERE (extract (month from data_lancamento) >= '6' AND extract (year from data_lancamento) = '2022');
 
 -- 21) Retorne o título dos álbuns lançados nos últimos 30 dias <!-- postgres=# select current_date - interval '30 DAY';-->
+INSERT INTO album (titulo, data_lancamento, artista_id) VALUES ('2025 do Leo', '2025/02/28', '9');
+SELECT titulo FROM album WHERE data_lancamento >= current_date - INTERVAL '30 DAYS';
 
 -- 22) Retorne o título e o dia de lançamento (por extenso) de todos os álbuns <!-- CASE WHEN select extract(dow from current_date) -->
+SELECT titulo, to_char(data_lancamento,'Day') AS dia_lancamento FROM album;
 
 -- 23) Retorne o título e o mês de lançamento (por extenso) de todos os álbuns
+SELECT titulo, to_char(data_lancamento,'Month') AS mes_lancamento FROM album;
 
 -- 24) Retorne pelo menos um dos álbuns mais antigos
+SELECT titulo, data_lancamento FROM album ORDER BY data_lancamento ASC LIMIT 1;
 
 -- 25) Retorne pelo menos um dos álbuns mais recentes
+SELECT titulo, data_lancamento FROM album ORDER BY data_lancamento DESC LIMIT 1;
 
 -- 26) Liste os _títulos_ das _músicas_ de todos os _álbuns_ de um determinado _artista_
+SELECT musica.titulo AS musica, album.titulo AS album, artista.nome AS nome 
+    FROM musica 
+    JOIN album ON musica.album_id = album.id 
+    JOIN artista ON album.artista_id = artista.id 
+WHERE artista.id = '2';
 
 -- 27) Liste os _títulos_ das _músicas_ de um _álbum_ de um determinado _artista_
+SELECT musica.titulo AS musica FROM musica
+    JOIN album ON musica.album_id = album.id
+    JOIN artista ON album.artista_id = artista.id
+WHERE artista.id = '1' AND album.id='1';
 
 -- 28) Liste somente os nomes de _usuários_ que possuem alguma _playlist_ (cuidado! com a repetição)
+SELECT DISTINCT usuario.nome FROM usuario LEFT JOIN playlist ON usuario.id = playlist.usuario_id;
 
 -- 29) Liste _artistas_ que ainda não possuem _álbuns_ cadastrados
+INSERT INTO artista (nome, nome_artistico) VALUES ('Pedro', 'MC Pedroka');
+SELECT artista.nome FROM artista LEFT JOIN album ON artista.id = album.artista_id WHERE album.id IS NULL;
 
 -- 30) Liste _usuários_ que ainda não possuem _playlists_ cadastradas
+INSERT INTO usuario (nome, email, senha) VALUES ('Luana', 'luna@outlook.com', '123');
+SELECT usuario.nome FROM usuario LEFT JOIN playlist ON usuario.id = playlist.usuario_id WHERE playlist.id IS NULL;
 
 -- 31) Retorne a quantidade de _álbuns_ por _artista_
+SELECT artista.nome, count(album.id) AS quantidade_albuns 
+FROM artista
+LEFT JOIN album ON artista.id = album.artista_id
+GROUP BY artista.nome
+ORDER BY quantidade_albuns DESC;
 
 -- 32) Retorne a quantidade de _músicas_ por _artista_
+SELECT artista.nome, count(musica.id) AS quantidade_musica
+FROM artista
+LEFT JOIN album ON artista.id = album.artista_id
+LEFT JOIN musica ON album.id = musica.album_id
+GROUP BY artista.nome
+ORDER BY quantidade_musica DESC;
 
 -- 33) Retorne o _título_ das _músicas_ de uma _playlist_ de um determinado _usuário_
+SELECT musica.titulo AS musica, playlist.nome AS playlist
+FROM musica
+JOIN playlist_musica ON musica.id = playlist_musica.musica_id
+JOIN playlist ON playlist_musica.playlist_id = playlist.id
+JOIN usuario ON playlist.usuario_id = usuario.id
+WHERE usuario.id = 1 AND playlist.id = 1;
 
 -- 34) Retorne a quantidade de _playlist_ de um determinado usuário
+SELECT usuario.nome, count(playlist.id) AS quantidade_playlists
+FROM usuario
+LEFT JOIN playlist ON playlist.usuario_id = usuario.id 
+WHERE usuario.id = '1'
+GROUP BY usuario.nome;
 
 -- 35) Retone a quantidade de _músicas_ por _artista_ (de artistas que possuem pelo menos 2 _músicas_)
+SELECT artista.nome AS nome_artista, count(musica.id) AS quantidade_musica
+FROM artista
+LEFT JOIN album ON artista.id = album.artista_id
+LEFT JOIN musica ON album.id = musica.album_id
+GROUP BY artista.nome
+HAVING count(musica.id) >= 2
+ORDER BY quantidade_musica DESC;
 
 -- 36) Retorne os títulos de todos os álbuns lançados no mesmo ano em que o álbum mais antigo foi lançado
 
