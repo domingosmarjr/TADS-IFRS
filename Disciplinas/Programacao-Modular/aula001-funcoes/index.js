@@ -50,12 +50,35 @@ console.log(c)
 
 // ---- FUNÇÃO NO JAVASCRIPT
 
-// Estrutra base da função:
-// function nome () {...}
+    // Estrutra base da função:
+    // function nome () {...}
 
-function aleatorio (inicio, fim) {
+function aleatorio1 (inicio, fim) {
     var dif = fim - inicio
     var resp = Math.floor(Math.random() * dif) + inicio
     return resp
+}
+
+// Se as entradas forem "erradas" (fim menor que o início)
+    // Pode-se retornar "null" no JavaScript
+    // Mas o melhor é jogar uma exceção ThrowException
+
+// Documentar função = barra + * + *
+
+/**
+ * Retorna um número aleatório dentro do intervalo de início e fim.
+ * @param {*} inicio o número inteiro indicando o início do intervalo 
+ * @param {*} fim número inteiro maior ou igual ao início
+ * @returns Um número aleatório entre o início e fim inclusive. Ou retorna undefined se o fim for < que o início.
+ */
+function aleatorio2 (inicio, fim) {
+    if (inicio <= fim) {
+        var dif = fim - inicio
+        var resp = Math.floor(Math.random() * dif) + inicio
+        return resp
+    } else {
+        return null
+        // throw new Error()
+    }
 }
 
