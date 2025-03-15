@@ -253,8 +253,23 @@ HAVING count(musica.id) >= 2
 ORDER BY quantidade_musica DESC;
 
 -- 36) Retorne os títulos de todos os álbuns lançados no mesmo ano em que o álbum mais antigo foi lançado
+INSERT INTO album (titulo, data_lancamento, artista_id) VALUES ('Pipokinha', '1999/01/20', '4');
+
+SELECT DISTINCT album.titulo, album.data_lancamento 
+FROM album
+WHERE 
+    EXTRACT (YEAR FROM album.data_lancamento) = 
+    (SELECT EXTRACT (YEAR FROM data_lancamento) FROM album ORDER BY data_lancamento ASC LIMIT 1);
 
 -- 37) Retorne os títulos de todos os álbuns lançados no mesmo ano em que o álbum mais novo foi lançado
+INSERT INTO album (titulo, data_lancamento, artista_id) VALUES ('Pipocada', '2025/01/20', '4');
+
+SELECT DISTINCT album.titulo, album.data_lancamento
+FROM album
+WHERE
+    EXTRACT (YEAR FROM album.data_lancamento) =
+    (SELECT EXTRACT (YEAR FROM data_lancamento) FROM album ORDER BY data_lancamento DESC LIMIT 1);
+
 
 -- 38) Retorne na mesma consulta os nomes de todos os artistas e de todos os usuários. Caso um determinado artista não tenha cadastrado seu nome, retorne seu nome artístico
 
