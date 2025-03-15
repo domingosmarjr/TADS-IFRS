@@ -272,9 +272,38 @@ WHERE
 
 
 -- 38) Retorne na mesma consulta os nomes de todos os artistas e de todos os usuários. Caso um determinado artista não tenha cadastrado seu nome, retorne seu nome artístico
+SELECT COALESCE (artista.nome, artista.nome_artistico) FROM artista
+UNION
+SELECT usuario.nome FROM usuario;
 
 -- 39) Retorne nomes das _playlists_ com e sem _músicas_
+SELECT playlist.nome, COUNT(playlist_musica.musica_id) AS quantidade_musica
+FROM playlist
+LEFT JOIN playlist_musica ON playlist_musica.playlist_id = playlist.id
+GROUP BY playlist.nome
+ORDER BY quantidade_musica DESC;
 
 -- 40) Retorne a média da quantidade de _músicas_ de todas as _playlists_
+SELECT avg(quantidade_musica) AS media_musicas_por_playlist
+FROM (
+    SELECT playlist.id, COUNT(playlist_musica.musica_id) AS quantidade_musica
+    FROM playlist
+    LEFT JOIN playlist_musica ON playlist_musica.playlist_id = playlist.id
+    GROUP BY playlist.id
+);
 
 -- 41) Retorne somente _playlists_ que possuem quantidade de músicas maior ou igual a média
+SELECT playlist.nome, count(playlist_musica.musica_id) AS quantidade_musica
+FROM playlist
+LEFT JOIN playlist_musica ON playlist_musica.playlist_id = playlist.id
+GROUP BY playlist.id, playlist.nome
+HAVING COUNT (playlist_musica.musica_id) >= (
+    SELECT AVG(quantidade_musica)
+    FROM (
+        SELECT COUNT(playlist_musica.musica_id) AS quantidade_musica
+        FROM playlist
+        LEFT JOIN playlist_musica ON playlist_musica.playlist_id = playlist.id
+        GROUP BY playlist.id
+    )
+)
+ORDER BY quantidade_musica DESC;
