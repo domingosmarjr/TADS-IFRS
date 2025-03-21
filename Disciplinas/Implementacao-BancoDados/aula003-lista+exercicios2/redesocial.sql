@@ -122,16 +122,51 @@ JOIN publicacao ON publicacao.id = conta_publicacao.publicacao_id
 GROUP BY usuario.id, usuario.nome;
 
 -- 7) Retornar as publicações com mais comentários
+INSERT INTO comentario (texto, publicacao_id, conta_id) VALUES ('Comentario12','1','1'); 
+
+SELECT publicacao.texto, COUNT(comentario.id) AS quantidade_comentarios
+FROM publicacao
+LEFT JOIN comentario ON publicacao.id = comentario.publicacao_id
+GROUP BY publicacao.id, publicacao.texto
+ORDER BY quantidade_comentarios DESC;
 
 -- 8) Retornar publicações que não tem comentários
+SELECT publicacao.texto, COUNT(comentario.id) AS quantidade_comentarios
+FROM publicacao
+LEFT JOIN comentario ON publicacao.id = comentario.publicacao_id
+GROUP BY publicacao.id, publicacao.texto
+HAVING COUNT(comentario.id) = 0
+ORDER BY quantidade_comentarios DESC;
 
 -- 9) Retornar somente usuários que possuem um única conta
+SELECT usuario.nome, count(conta.id) AS quantidade_conta
+FROM usuario
+LEFT JOIN conta ON usuario.id = conta.usuario_id
+GROUP BY usuario.nome, usuario.id
+HAVING count(conta.id) = 1;
 
 -- 10) Retornar usuários com mais de uma conta sob sua responsabilidade
+SELECT usuario.nome, count(conta.id) AS quantidade_conta
+FROM usuario
+LEFT JOIN conta ON usuario.id = conta.usuario_id
+GROUP BY usuario.nome, usuario.id
+HAVING count(conta.id) > 1;
 
 -- 11) Retornar publicações sem arquivos adicionais (Sem registros na tabela de arquivo)
+DELETE FROM arquivo WHERE id = 6;
+
+SELECT publicacao.id, publicacao.texto, publicacao.arquivo_principal
+FROM publicacao
+LEFT JOIN arquivo ON publicacao.id = arquivo.publicacao_id
+GROUP BY publicacao.id, publicacao.texto
+HAVING count(arquivo.id) < 1;
 
 -- 12) Retornar somente publicações compartilhadas por mais de uma conta
+SELECT publicacao.texto, count(conta_publicacao.conta_id) AS quantidade_compartilhamento
+FROM publicacao
+JOIN conta_publicacao ON publicacao.id = conta_publicacao.publicacao_id
+GROUP BY publicacao.id, publicacao.texto
+HAVING COUNT(conta_publicacao.conta_id) > 1;
 
 -- 13) Retornar usuários e suas respectivas contas que não criaram nenhuma publicação
 
