@@ -1,0 +1,15 @@
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula009-listas/obj/Debug/net8.0/aula009-listas.GeneratedMSBuildEditorConfig.editorconfig
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula009-listas/obj/Debug/net8.0/aula009-listas.AssemblyInfoInputs.cache
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula009-listas/obj/Debug/net8.0/aula009-listas.AssemblyInfo.cs
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula009-listas/obj/Debug/net8.0/aula009-listas.csproj.CoreCompileInputs.cache
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula009-listas/obj/Debug/net8.0/aula009-listas.sourcelink.json
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula009-listas/bin/Debug/net8.0/aula009-listas
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula009-listas/bin/Debug/net8.0/aula009-listas.deps.json
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula009-listas/bin/Debug/net8.0/aula009-listas.runtimeconfig.json
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula009-listas/bin/Debug/net8.0/aula009-listas.dll
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula009-listas/bin/Debug/net8.0/aula009-listas.pdb
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula009-listas/obj/Debug/net8.0/aula009-listas.dll
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula009-listas/obj/Debug/net8.0/refint/aula009-listas.dll
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula009-listas/obj/Debug/net8.0/aula009-listas.pdb
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula009-listas/obj/Debug/net8.0/aula009-listas.genruntimeconfig.cache
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula009-listas/obj/Debug/net8.0/ref/aula009-listas.dll

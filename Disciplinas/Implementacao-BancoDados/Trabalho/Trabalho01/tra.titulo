@@ -1,0 +1,34 @@
+   nome    |            nome             |     titulo     | count 
+-----------+-----------------------------+----------------+-------
+ Alice     | Curso de Banco de Dados     | Modelo ER      |     1
+ Alice     | Curso de Banco de Dados     | MySQL          |     1
+ Alice     | Curso de Banco de Dados     | Postgres       |     1
+ Ana Lucia | Curso de Banco de Dados     | Modelo ER      |     1
+ Ana Lucia | Curso de Banco de Dados     | MySQL          |     1
+ Ana Lucia | Curso de Banco de Dados     | Postgres       |     1
+ Anastacia | Curso de Banco de Dados     | Modelo ER      |     1
+ Anastacia | Curso de Banco de Dados     | MySQL          |     1
+ Anastacia | Curso de Banco de Dados     | Postgres       |     1
+ Angela    | Curso de Banco de Dados     | Modelo ER      |     1
+ Angela    | Curso de Banco de Dados     | MySQL          |     1
+ Angela    | Curso de Banco de Dados     | Postgres       |     1
+ Aninha    | Curso de Banco de Dados     | Modelo ER      |     1
+ Aninha    | Curso de Banco de Dados     | MySQL          |     1
+ Aninha    | Curso de Banco de Dados     | Postgres       |     1
+ Beatriz   | Curso de Orientação Objetos | Encapsulamento |     1
+ Beatriz   | Curso de Orientação Objetos | Herança        |     1
+ Beatriz   | Curso de Orientação Objetos | Polimorfismo   |     1
+ Bela      | Curso de Orientação Objetos | Encapsulamento |     1
+ Bela      | Curso de Orientação Objetos | Herança        |     1
+ Bela      | Curso de Orientação Objetos | Polimorfismo   |     1
+ Bia       | Curso de Orientação Objetos | Encapsulamento |     1
+ Bia       | Curso de Orientação Objetos | Herança        |     1
+ Bia       | Curso de Orientação Objetos | Polimorfismo   |     1
+ Bianca    | Curso de Orientação Objetos | Encapsulamento |     1
+ Bianca    | Curso de Orientação Objetos | Herança        |     1
+ Bianca    | Curso de Orientação Objetos | Polimorfismo   |     1
+ Bruna     | Curso de Orientação Objetos | Encapsulamento |     1
+ Bruna     | Curso de Orientação Objetos | Herança        |     1
+ Bruna     | Curso de Orientação Objetos | Polimorfismo   |     1
+(30 rows)
+

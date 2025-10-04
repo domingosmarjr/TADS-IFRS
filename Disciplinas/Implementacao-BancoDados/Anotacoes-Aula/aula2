@@ -1,0 +1,99 @@
+Aula 02 - 19/08
+
+GROUP BY = "agrupar por participante.id"
+    O que eu não quero que repita?
+    "GROP BY palestra.titulo"
+
+    
+HAVING = filtro depois do cálculo, depois da computação
+    >filtro do count!
+    
+    >SÓ POSSO USAR HAVING APÓS O GROUP BY!!
+        group by palestra.id HAVING count(*) >= 2;
+
+=======================================================
+SUBSELECTS -> selects auxiliares de um select
+    
+    >resolver um problema por vez
+
+    SELECT participante.id, participante.nome FROM participante
+    INNER JOIN inscricao ON (participante.id = inscricao.participante_id) WHERE inscricao.evento_id = (
+        SELECT evento.id FROM evento
+        JOIN palestra ON evento.id = palestra.evento_id
+        GROUP BY evento.id
+        ORDER BY count(*)
+        DESC LIMIT 1
+    );
+
+    >resolver SQL de dentro primeiro
+    >resolver SQL de fora e usar ele como condição interna
+
+=======================================================
+CONECTANDO JAVA - Banco POSTGRES
+
+> Preciso dos drives de SGBD (MySQL, PSQL, etc.)
+    - Baixando manualmente em .lib
+    - Usando gerenciador de pacotes (maven)
+        - Declarar independência = "Java, quero essa dependência"
+        - Java baixa para mim a dependência
+
+PASSO A PASSO:
+> Preciso ter a JDK e o PSQL instalados
+    > Ctrl+Shift+P -> Criar Projeto Java (Maven)
+    > Nothing
+    > Nome: Sistema de Eventos (nome do projeto/sistema)
+    > Escolher pasta do Projeto
+    > pom.xml 
+        - lugar onde declarar dependências!
+        - pegar na net o driver do Postgres
+            pesquisar: maven postgres
+            copiar o XML, dentro do pom.xml
+                <dependencies>...</dependencies>
+    > testar o Main.java
+    > Main.java -> Declarar parâmetros
+        String host = "localhost";
+        String username = "postgres";
+        String port = "5432";
+        String password = "postgres";
+        String dbname = "sistema_eventos";
+
+        Pesquisar URL Postgres Conection
+        > pegar a primeira e colar no url
+        String url = "jdbc:postgresql://"+host+":"+port+"/"+dbname;
+
+        //DriverManagerGetConnection -> conecta no PSQL
+        Conection conexao = DriverManager.getConnection(url, password);
+
+        OPERAÇÃO
+        String sql = "SELECT participante.nome FROM participante ORDER BY id";
+
+        PEGA A QUERY E RETORNA 
+        ResultSet rs = conexao.prepareStament(sql).executeQuery();
+
+        while (rs.next()) {
+            System.out.println(rs.getString("nome"));
+        }
+
+        //SEMPRE FECHAR SUAS CONEXÕES
+        rs.close();
+        conexao.close();
+
+        //TRATANDO EXCEÇÕES
+
+        try {
+            Conection conexao = DriverManager.getConnection(url, password);
+
+            String sql = "SELECT participante.nome FROM participante ORDER BY id";
+
+            ResultSet rs = conexao.prepareStament(sql).executeQuery();
+
+            while (rs.next()) {
+                System.out.println(rs.getString("nome"));
+            }
+            rs.close();
+            conexao.close();
+        } catch (Exception e) {
+            System.out.println("Deu algum erro!");
+        }
+
+

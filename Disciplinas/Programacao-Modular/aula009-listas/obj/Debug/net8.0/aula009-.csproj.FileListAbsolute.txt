@@ -1,0 +1,5 @@
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula009-/obj/Debug/net8.0/aula009-.GeneratedMSBuildEditorConfig.editorconfig
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula009-/obj/Debug/net8.0/aula009-.AssemblyInfoInputs.cache
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula009-/obj/Debug/net8.0/aula009-.AssemblyInfo.cs
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula009-/obj/Debug/net8.0/aula009-.csproj.CoreCompileInputs.cache
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula009-/obj/Debug/net8.0/aula009-.sourcelink.json

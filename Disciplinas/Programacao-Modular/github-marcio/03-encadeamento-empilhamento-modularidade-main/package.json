@@ -1,0 +1,21 @@
+{
+  "name": "2025-03-28-encadeamento-empilhamento-modularidade-validacao",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pm-2025-1/2025-03-28-encadeamento-empilhamento-modularidade-validacao.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pm-2025-1/2025-03-28-encadeamento-empilhamento-modularidade-validacao/issues"
+  },
+  "homepage": "https://github.com/pm-2025-1/2025-03-28-encadeamento-empilhamento-modularidade-validacao#readme",
+  "description": ""
+}

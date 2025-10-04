@@ -1,0 +1,15 @@
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula008-tipos/obj/Debug/net8.0/aula008-tipos.GeneratedMSBuildEditorConfig.editorconfig
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula008-tipos/obj/Debug/net8.0/aula008-tipos.AssemblyInfoInputs.cache
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula008-tipos/obj/Debug/net8.0/aula008-tipos.AssemblyInfo.cs
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula008-tipos/obj/Debug/net8.0/aula008-tipos.csproj.CoreCompileInputs.cache
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula008-tipos/obj/Debug/net8.0/aula008-tipos.sourcelink.json
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula008-tipos/bin/Debug/net8.0/aula008-tipos
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula008-tipos/bin/Debug/net8.0/aula008-tipos.deps.json
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula008-tipos/bin/Debug/net8.0/aula008-tipos.runtimeconfig.json
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula008-tipos/bin/Debug/net8.0/aula008-tipos.dll
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula008-tipos/bin/Debug/net8.0/aula008-tipos.pdb
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula008-tipos/obj/Debug/net8.0/aula008-tipos.dll
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula008-tipos/obj/Debug/net8.0/refint/aula008-tipos.dll
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula008-tipos/obj/Debug/net8.0/aula008-tipos.pdb
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula008-tipos/obj/Debug/net8.0/aula008-tipos.genruntimeconfig.cache
+/home/domingos/Documents/TADS-IFRS/Disciplinas/Programacao-Modular/aula008-tipos/obj/Debug/net8.0/ref/aula008-tipos.dll

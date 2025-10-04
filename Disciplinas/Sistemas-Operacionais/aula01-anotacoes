@@ -1,0 +1,38 @@
+14/08
+"Computador sem Sistema Operacional não é nada."
+Avaliação: Artigos 5 páginas
+
+LINUX:
+	man + (comando) = mostra o que ele faz
+	ls = lista
+	ls -l = lista com detalhes
+	ls -l *.txt = mostrar todos os arquivos .txt da pasta
+	mkdir nome = cria uma pasta no diretório atual
+	cd nomePasta = change directory
+	cd .. = volta 1 para trás
+	cd ../.. = volta 2 para trás
+	cd ~ = voltar para raiz
+	pwd = onde a gente tá
+	cp (arquivoOriginal) (nomeArquivoNovo) = copia e cola outro arquivo
+		cp teste.txt outra_pasta
+		(copia o teste.txt e o jogo para outra_pasta)
+		
+	rm (nomearquivo) = apaga o arquivo
+	rm *.txt = apaga todos os arquivos .txt da pasta
+	rmdir nomePasta = só apaga pastas vazias
+	rm -Rf nomePasta = apaga tudo dentro da pasta!
+	
+	echo "Guardei a info" > para_um_arquivo.txt = guardei um texto no arquivo chamado para_um_arquivo.txt
+	
+	mv (nomeArquivo) (nomeNovo) = muda nome do arquivo!
+	mv (nomeArquivo) ../nomePasta = move arquivo para outra pasta
+	mv (nomeArquivo) /home/nomePasta
+	
+	df -vh = verificar as pastas e tamanho ocupadas do PC
+	
+	ps -z = mostra todos os processos executando na máquina
+	
+	top = mostra os processos que estão sendo executados
+	
+	
+	

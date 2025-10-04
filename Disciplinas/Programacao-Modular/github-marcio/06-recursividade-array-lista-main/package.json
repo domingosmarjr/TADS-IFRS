@@ -1,0 +1,21 @@
+{
+  "name": "2025-04-25-recursividade-array-lista",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pm-2025-1/2025-04-25-recursividade-array-lista.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pm-2025-1/2025-04-25-recursividade-array-lista/issues"
+  },
+  "homepage": "https://github.com/pm-2025-1/2025-04-25-recursividade-array-lista#readme"
+}
