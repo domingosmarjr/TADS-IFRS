@@ -40,13 +40,13 @@ Ao encerrar um exame é gerado o laudo
 
 Ações que devemos conseguir fazer na plataforma (cada item abaixo vale 1,0 ponto)
 
-Criar um paciente
-Criar uma medica
-Criar um tecnico
-Disponibilizar Agenda (médico)
-Fazer um agendamento (clinica - médico)
-Quando acontece o agendamento é criada uma consulta
-Encerrar consulta / Gerar prontuario da consulta
-Marcar exame (médico pode solicitar / paciente pode soliciar)
-Encerrar Exame / Gerar Laudo do exame (tecnico ou medico gera um laudo)
+1 Criar um paciente
+2 Criar uma medica
+3 Criar um tecnico
+4 Disponibilizar Agenda (médico)
+5 Fazer um agendamento (clinica - médico)
+6 Quando acontece o agendamento é criada uma consulta
+7 Encerrar consulta / Gerar prontuario da consulta
+8 Marcar exame (médico pode solicitar / paciente pode soliciar)
+9 Encerrar Exame / Gerar Laudo do exame (tecnico ou medico gera um laudo)
 Visualizar historico de um paciente
