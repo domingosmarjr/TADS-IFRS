@@ -12,46 +12,46 @@ public class App {
         // // TASKS BÁSICAS DO TRABALHO
         // // 
         // // [1](0.1) = Criar Paciente
-        // Paciente p1 = new Paciente("Pedro", "12345678901", "pedro@live.com", "5553932331212", "01/09/2000", 'M', TipoSanguineo.APositivo);
+        Paciente p1 = new Paciente("Pedro", "12345678901", "pedro@live.com", "5553932331212", "01/09/2000", 'M', TipoSanguineo.APositivo);
         
         // // [2](0.1) = Criar Medico
-        // Medico m1 = new Medico("Linda", "12345678900", "linda@gmail.com", "5553991752300", 123456);
+        Medico m1 = new Medico("Linda", "12345678900", "linda@gmail.com", "5553991752300", 123456);
 
         // // [3](0.1) = Criar Técnico
-        // Tecnico t1 = new Tecnico("Alex", "12345678902", "alex@bol.com", "5553997845122", "123321");
+        Tecnico t1 = new Tecnico("Alex", "12345678902", "alex@bol.com", "5553997845122", "123321");
 
         // // [4](0.1) = Abrir agenda do Médico
-        // m1.abrirAgenda(10, 11, 2025);
-        // System.out.println(m1.listarAgenda());
+        m1.abrirAgenda(10, 11, 2025);
+        System.out.println(m1.listarAgenda());
 
         // // [5](0.1) = Fazer agendamento
         // // ------Médico marcar consulta.
-        // m1.marcarConsulta(a1, p1, 10, 11, 2025, 14);
+        m1.marcarConsulta(a1, p1, 10, 11, 2025, 14);
         // // ------Paciente marcar consulta
-        // p1.marcarConsulta(a1, m1, 10, 11, 2025, 15);
+        p1.marcarConsulta(a1, m1, 10, 11, 2025, 15);
 
         // // [6](0.1) = Quando acontece agendamento gera um new Consulta()
-        // System.out.println(a1.getListaConsultas().get(0).getTipo() == TipoConsulta.CONSULTA);
+        System.out.println(a1.getListaConsultas().get(0).getTipo() == TipoConsulta.CONSULTA);
 
         // // [7](0.1) = Quando encerra uma consulta se gera um prontuario
-        // a1.getListaConsultas().get(0).encerrar("Dor de cabeça", "Dorflex 20mg");
-        // System.out.println(a1.getListaConsultas().get(0).getProntuario());
+        a1.getListaConsultas().get(0).encerrar("Dor de cabeça", "Dorflex 20mg");
+        System.out.println(a1.getListaConsultas().get(0).getProntuario());
 
         // // [8](0.1) = Médico/Paciente pode solicitar exame
-        // m1.marcarExame("Sangue", a1, p1, 10, 11, 2025, 13);
-        // t1.marcarExame("Urina", a1, p1, 12, 11, 2025, 13);
-        // p1.marcarExame("Fezes", a1, t1, 12, 11, 2025, 14);
-        // p1.marcarExame("Rotina", a1, m1, 10, 11, 2025, 14);
+        m1.marcarExame("Sangue", a1, p1, 10, 11, 2025, 13);
+        t1.marcarExame("Urina", a1, p1, 12, 11, 2025, 13);
+        p1.marcarExame("Fezes", a1, t1, 12, 11, 2025, 14);
+        p1.marcarExame("Rotina", a1, m1, 10, 11, 2025, 14);
 
         // // [9](0.1) = Técnico/Médico encerram exames
-        // // ------Ao encerrar o exame, já gera laudo.
-        // System.out.println(a1.getExame(m1, p1, 10, 11, 2025, 13));
-        // m1.encerrarExame("Limpo", a1.getExame(m1, p1, 10, 11, 2025, 13));
-        // System.out.println(a1.getExame(m1, p1, 10, 11, 2025, 13).getLaudo() == "Limpo");
-        // System.out.println(a1.getExame(m1, p1, 10, 11, 2025, 13));
+        // ------Ao encerrar o exame, já gera laudo.
+        System.out.println(a1.getExame(m1, p1, 10, 11, 2025, 13));
+        m1.encerrarExame("Limpo", a1.getExame(m1, p1, 10, 11, 2025, 13));
+        System.out.println(a1.getExame(m1, p1, 10, 11, 2025, 13).getLaudo() == "Limpo");
+        System.out.println(a1.getExame(m1, p1, 10, 11, 2025, 13));
 
         // // [10](0.1) = Histórico de Paciente
-        // p1.getHistorico();
+        p1.getHistorico();
 
         // ALTERAÇÕES QUE EU FARIA: 
         // 1)   Adaptaria uma classe só para lidar com lidar com o LocalDateTime

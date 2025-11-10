@@ -9,7 +9,7 @@ public class Tecnico extends Funcionario {
         super.setCpf(cpf);
         super.setEmail(email);
         super.setTelefone(telefone);
-        this.setCodTecnico(codTec);;
+        this.setCodTecnico(codTec);
         super.proximoCodigo();
     }
 
