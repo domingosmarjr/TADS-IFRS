@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISE | Perfil do Participante</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" 
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light flex-column text-center">
+        <a class="navbar-brand mb-2" href="/">SISE - SISTEMA DE EVENTOS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/landing/eventos">Eventos</a></li>
+                <li class="nav-item active"><a class="nav-link" href="/login">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="/cadastro">Cadastre-se</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main class="container my-4">
+
+    <div class="mb-3">
+        <a href="/admin/participantes" class="btn btn-secondary">&larr; Voltar para Participantes</a>
+    </div>
+
+    <h1 class="mb-4">Perfil do Participante</h1>
+
+    <!-- Card com informações do participante -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-primary text-white">Informações Pessoais</div>
+        <div class="card-body">
+            <p><strong>ID:</strong> {{participante.id}}</p>
+            <p><strong>Nome:</strong> {{participante.nome}}</p>
+            <p><strong>Data de Nascimento:</strong> {{participante.data_nascimento}}</p>
+            <p><strong>CPF:</strong> {{participante.cpf}}</p>
+            <p><strong>Email:</strong> {{participante.email}}</p>
+            <p><strong>Usuário:</strong> {{participante.usuarioId}}</p>
+            <p><strong>Login:</strong> {{usuario.login}}</p>
+            <p><strong>Senha:</strong> {{usuario.senha}}</p>
+        </div>
+    </div>
+
+    <!-- Card com eventos inscritos -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-info text-white">Eventos Inscritos</div>
+        <div class="card-body table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome do Evento</th>
+                        <th>Data Início</th>
+                        <th>Hora Início</th>
+                        <th>Data Fim</th>
+                        <th>Hora Fim</th>
+                        <th>Local</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#eventos}}
+                    <tr>
+                        <td>{{id}}</td>
+                        <td>{{nome}}</td>
+                        <td>{{data_inicio}}</td>
+                        <td>{{hora_inicio}}</td>
+                        <td>{{data_fim}}</td>
+                        <td>{{hora_fim}}</td>
+                        <td>{{local}}</td>
+                    </tr>
+                    {{/eventos}}
+                    {{^eventos}}
+                    <tr>
+                        <td colspan="7" class="text-center">Nenhum evento inscrito</td>
+                    </tr>
+                    {{/eventos}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mb-4">
+        <a href="/area/admin" class="btn btn-light">Voltar ao Dashboard</a>
+    </div>
+
+</main>
+
+</body>
+</html>

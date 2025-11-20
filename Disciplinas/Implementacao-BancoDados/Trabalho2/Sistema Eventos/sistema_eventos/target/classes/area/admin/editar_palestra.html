@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Eventos - SISE | Editar Palestra</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" 
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light flex-column text-center">
+            <a class="navbar-brand mb-2" href="/">
+                SISE - SISTEMA DE EVENTOS
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/landing/eventos">Eventos</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cadastro">Cadastre-se</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+<main class="container">
+
+    <form action="/admin/palestras/editar/{{palestra.id}}" method="post">
+
+        <div class="form-group">
+            <label for="titulo">Título da Palestra</label>
+            <input type="text" class="form-control" id="titulo" name="titulo"
+                   value="{{palestra.titulo}}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="duracao">Duração (em minutos)</label>
+            <input type="number" class="form-control" id="duracao" name="duracao"
+                   value="{{palestra.duracao}}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="data_hora_inicio">Data e Hora de Início</label>
+            <input type="datetime-local" class="form-control"
+                   id="data_hora_inicio" name="data_hora_inicio"
+                   value="{{palestra.dataHoraInput}}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="evento_id">Evento</label>
+            <select class="form-control" id="evento_id" name="evento_id" required>
+            {{#eventos}}
+                <option value="{{id}}" {{#selecionado}}selected{{/selecionado}}>{{nome}}</option>
+            {{/eventos}}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="palestrantes">Palestrantes</label>
+            <select class="form-control" id="palestrantes" name="palestrantes" multiple>
+                {{#palestrantesTodos}}
+                    <option value="{{id}}" {{#selecionado}}selected{{/selecionado}}>{{nome}}</option>
+                {{/palestrantesTodos}}
+            </select>
+            <small class="form-text text-muted">Segure Ctrl (Windows) ou Cmd (Mac) para selecionar múltiplos palestrantes.</small>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+        <a href="/admin/palestras/dados/{{palestra.id}}" class="btn btn-secondary">Cancelar</a>
+
+    </form>
+
+</main>
+
+</body>
+</html>

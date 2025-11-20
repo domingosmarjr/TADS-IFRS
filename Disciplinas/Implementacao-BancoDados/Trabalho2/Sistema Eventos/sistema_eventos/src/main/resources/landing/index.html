@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Eventos - SISE | Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" 
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light flex-column text-center">
+            <a class="navbar-brand mb-2" href="/">
+                SISE - SISTEMA DE EVENTOS
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/landing/eventos">Eventos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cadastro">Cadastre-se</a>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </header>
+    <main class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <div class="card shadow-sm p-4">
+                    <div class="card-body">
+                        <h2 class="card-title mb-3">Fala Igor!</h2>
+                        <p class="card-text">Montei esse pequeno MVP com base nas solicitações do trabalho. Nessa página deixei algumas descrições para auxiliar na avaliação do código e do sistema:</p>
+                        
+                        <h5>Funcionalidades implementadas:</h5>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item">Adicionei tabelas extras: organizador, evento_privado e usuário.</li>
+                            <li class="list-group-item">Organizador, Palestrante, Participante possuem login e senha ao criarem (conectados tabela usuario e users banco).</li>
+                            <li class="list-group-item">Possível criar eventos e criar palestras de eventos.</li>
+                            <li class="list-group-item">Eventos de cascata em deletes específicos.</li>
+                        </ul>
+
+                        <h5>Dificuldades encontradas:</h5>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item">Realizar inscrição em evento privado: não consegui estruturar a lógica de participante-inscricao-evento(evento_privado)</li>
+                            <li class="list-group-item">Design de interação não ficou dos melhores em algumas partes</li>
+                            <li class="list-group-item">Algumas leituras de JSON não consegui formatar</li>
+                            <li class="list-group-item">Por alguns autores, não aparece a imagem do evento (todo de implementação)</li>
+                        </ul>
+
+                        <h5>Funcionalidades pedidas e onde encontrar:</h5>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item">Visualizar Imagens: consultados pelo login do admin no Gerenciador de Eventos > Visualizar.</li>
+                            <li class="list-group-item">Trocar Imagem: editadas pelo login do admin no Gerenciador de Eventos > Editar</li>
+                            <li class="list-group-item">JSON: descritas em Gerenciador de Eventos > Visualizar</li>
+                        </ul>
+
+                        <h5>TODOs e melhorias futuras:</h5>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item">Reestruturar todo ER para modelar melhor o sistema</li>
+                            <li class="list-group-item">Criar estrutura visual padrão</li>
+                            <li class="list-group-item">Adicionar verificação para todas as datas</li>
+                            <li class="list-group-item">Ajustar visualização de todas as páginas de evento</li>
+                            <li class="list-group-item">Refatorar lógica de evento -> evento_privado para permitir inscrição com senha</li>
+                            <li class="list-group-item">Refatorar arquitetura para não ficar espaguete</li>
+                            <li class="list-group-item">Organizar apresentação-negócio-persistência</li>
+                            <li class="list-group-item">Criar baterias de testes</li>
+                            <li class="list-group-item">Organizar o main para ficar mais legível</li>
+                            <li class="list-group-item">Permitir troca de senha para todos os usuários</li>
+                            <li class="list-group-item">Adicionaria try-catch e transações no banco, para garantir transações sem comprometer dados.</li>
+                        </ul>
+
+                        <p class="card-text">Em suma, o sistema está operacional com suas limitações. Participante e organizador são cadastrados manualmente ou pelo admin. Palestrante é cadastrado pelo organizador ou admin, mas cada um possui login e senha.</p>
+
+                        <h5 class="mt-4">Login de admin:</h5>
+                        <div class="d-flex flex-column mb-3">
+                            <span><strong>Usuário:</strong> admin</span>
+                            <span><strong>Senha:</strong> admin</span>
+                        </div>
+
+                        <!-- Botão para acessar login, caso queira ativar -->
+                        <!-- <a href="/login" class="btn btn-primary btn-block">Acessar Painel</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-dark text-white text-center py-3">
+        &copy; Domingos Martins Jr. | 2025 | Sistema de Eventos - SISE
+    </footer>
+
+</body>
+</html>

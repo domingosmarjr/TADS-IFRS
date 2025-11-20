@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Eventos - SISE | Cadastrar Palestra</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" 
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light flex-column text-center">
+            <a class="navbar-brand mb-2" href="/">
+                SISE - SISTEMA DE EVENTOS
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/landing/eventos">Eventos</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cadastro">Cadastre-se</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2 class="mb-4">Cadastrar Palestra</h2>
+
+        <form action="/organizador/evento/{{eventoId}}/palestra/cadastrar" method="post">
+        <div class="form-group">
+            <label for="titulo">Título da Palestra</label>
+            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Digite o título da palestra" required>
+        </div>
+
+        <div class="form-group">
+            <label for="duracao">Duração (em minutos)</label>
+            <input type="number" class="form-control" id="duracao" name="duracao" placeholder="Digite a duração" required>
+        </div>
+
+        <div class="form-group">
+            <label for="data_hora">Data e Hora de Início</label>
+            <input type="datetime-local" class="form-control" id="data_hora" name="data_hora" required>
+        </div>
+
+        <hr>
+        <h4>Cadastrar Novo Palestrante</h4>
+
+        <div class="form-group">
+            <label for="novoPalestranteNome">Nome</label>
+            <input type="text" class="form-control" id="novoPalestranteNome" name="novoPalestranteNome" placeholder="Nome do palestrante" required>
+        </div>
+
+        <div class="form-group">
+            <label for="novoPalestranteEmail">Email</label>
+            <input type="email" class="form-control" id="novoPalestranteEmail" name="novoPalestranteEmail" placeholder="Email do palestrante" required>
+        </div>
+
+        <div class="form-group">
+            <label for="novoPalestranteCpf">CPF</label>
+            <input type="text" class="form-control" id="novoPalestranteCpf" name="novoPalestranteCpf" placeholder="CPF do palestrante" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Cadastrar Palestra e Palestrante</button>
+        <a href="/organizador/eventos" class="btn btn-secondary">Voltar</a>
+    </form>
+    </main>
+</body>
+</html>

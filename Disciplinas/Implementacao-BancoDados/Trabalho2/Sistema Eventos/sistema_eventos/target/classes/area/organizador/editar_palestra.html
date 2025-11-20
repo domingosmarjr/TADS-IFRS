@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Eventos - SISE | Palestras</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" 
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light flex-column text-center">
+            <a class="navbar-brand mb-2" href="/">
+                SISE - SISTEMA DE EVENTOS
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/landing/eventos">Eventos</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cadastro">Cadastre-se</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container mt-4">
+            <h1 class="mb-4">Editar Palestra</h1>
+
+            <a href="/organizador/evento/{{palestra.eventoId}}/palestras" class="btn btn-primary mb-3">
+                Voltar para lista de palestras
+            </a>
+
+            <form action="/organizador/palestra/{{palestra.id}}/editar" method="post" class="mb-4">
+
+                <!-- Título -->
+                <div class="mb-3">
+                    <label for="titulo" class="form-label">Título:</label>
+                    <input type="text" id="titulo" name="titulo" class="form-control"
+                        value="{{palestra.titulo}}" required>
+                </div>
+
+                <!-- Duração -->
+                <div class="mb-3">
+                    <label for="duracao" class="form-label">Duração (minutos):</label>
+                    <input type="number" id="duracao" name="duracao" class="form-control"
+                        value="{{palestra.duracao}}" min="1" required>
+                </div>
+
+                <!-- Data e Hora -->
+                <div class="mb-3">
+                    <label for="data_hora" class="form-label">Data / Hora de Início:</label>
+                    <input type="datetime-local" id="data_hora" name="data_hora" class="form-control"
+                        value="{{palestra.dataHora}}">
+                </div>
+
+                <!-- Palestrante -->
+                <div class="mb-3">
+                    <label for="palestranteId" class="form-label">Palestrante responsável:</label>
+                    <div class="input-group">
+                        <select name="palestrante_id">
+                            {{#palestrantesTodos}}
+                                <option value="{{id}}" {{#selecionado}}selected{{/selecionado}}>
+                                    {{nome}}
+                                </option>
+                            {{/palestrantesTodos}}
+                        </select>
+                    </div>
+                    <small class="form-text text-muted">Escolha um palestrante já cadastrado ou crie um novo.</small>
+                </div>
+
+                <!-- Botão salvar -->
+                <button type="submit" class="btn btn-success">Salvar Alterações</button>
+            </form>
+
+            <!-- Botão excluir -->
+            <form action="/organizador/palestra/{{palestra.id}}/deletar" method="post">
+                <button type="submit" class="btn btn-danger">Excluir Palestra</button>
+            </form>
+
+        </div>
+    </main>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

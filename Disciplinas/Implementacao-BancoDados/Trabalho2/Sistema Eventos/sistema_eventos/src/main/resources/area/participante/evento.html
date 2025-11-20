@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Eventos - SISE | Evento</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" 
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light flex-column text-center">
+        <a class="navbar-brand mb-2" href="/">SISE - SISTEMA DE EVENTOS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/landing/eventos">Eventos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cadastro">Cadastre-se</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main class="container my-4">
+
+    <!-- Botão voltar para o perfil -->
+    <div class="mb-3">
+        <a href="/participante/perfil" class="btn btn-secondary">&larr; Voltar para o Perfil</a>
+    </div>
+
+    <h1>{{evento.nome}}</h1>
+
+    <!-- Informações do Evento -->
+    <div class="card mb-4">
+        <div class="card-header">Descrição do Evento</div>
+        <div class="card-body">
+            {{#bannerBase64}}
+            <div class="text-center mb-4">
+                <img src="data:image/jpeg;base64,{{bannerBase64}}" class="img-fluid rounded shadow-sm" alt="Banner do Evento" style="max-width: 650px; width: 100%; height: auto; object-fit: contain; border: 1px solid black;">
+            </div>
+            {{/bannerBase64}}
+
+            <p>
+                <strong>Descrição:</strong>
+                {{#evento.detalhes.descricao}}
+                    {{evento.detalhes.descricao}}
+                {{/evento.detalhes.descricao}}
+                {{^evento.detalhes.descricao}}
+                    Sem detalhes
+                {{/evento.detalhes.descricao}}
+            </p>
+
+            <p><strong>Data de Início:</strong> {{evento.data_inicio}}</p>
+            <p><strong>Data de Término:</strong> {{evento.data_fim}}</p>
+        </div>
+    </div>
+
+    <!-- Inscrição / Desinscrição -->
+    <div class="card mb-4">
+        <div class="card-body">
+            {{#inscrito}}
+            <form action="/participante/evento/{{evento.id}}/desinscrever" method="post">
+                <button type="submit" class="btn btn-danger">Desinscrever</button>
+            </form>
+            {{/inscrito}}
+
+            {{^inscrito}}
+            <form action="/participante/evento/{{evento.id}}/inscrever" method="post">
+                {{#privado}}
+                <div class="form-group">
+                    <label for="senha">Senha do Evento Privado:</label>
+                    <input type="password" class="form-control" name="senhaAcesso" id="senha" placeholder="Digite a senha" required>
+                </div>
+                {{/privado}}
+                <button type="submit" class="btn btn-success">Inscrever</button>
+            </form>
+            {{/inscrito}}
+        </div>
+    </div>
+
+    <!-- Palestras -->
+    <div class="card mb-4">
+        <div class="card-header">Palestras</div>
+        <div class="card-body">
+            {{#palestras}}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5>{{titulo}}</h5>
+                    <p><strong>Duração:</strong> {{duracao}} minutos</p>
+                    <p><strong>Início:</strong> {{data}}</p>
+
+                    <h6>Palestrantes</h6>
+                    {{#palestrantesPorPalestra.[id]}}
+                    <div class="border rounded p-2 mb-2">
+                        <p><strong>Nome:</strong> {{nome}}</p>
+                        <p><strong>Email:</strong> {{email}}</p>
+                        <p><strong>Biografia:</strong> {{biografia}}</p>
+                    </div>
+                    {{/palestrantesPorPalestra.[id]}}
+                </div>
+            </div>
+            {{/palestras}}
+            {{^palestras}}
+            <p>Não há palestras cadastradas para este evento.</p>
+            {{/palestras}}
+        </div>
+    </div>
+
+</main>
+
+</body>
+</html>
