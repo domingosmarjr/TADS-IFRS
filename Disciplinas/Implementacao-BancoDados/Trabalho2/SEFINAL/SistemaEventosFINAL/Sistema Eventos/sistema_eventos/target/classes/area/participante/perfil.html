@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Eventos - SISE | Perfil</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" 
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light flex-column text-center">
+            <a class="navbar-brand mb-2" href="/">
+                SISE - SISTEMA DE EVENTOS
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/landing/eventos">Eventos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cadastro">Cadastre-se</a>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </header>
+    <main class="container">
+
+        <!-- Informações do Participante -->
+        <div class="card mb-4">
+            <div class="card-header">Informações Pessoais</div>
+            <div class="card-body">
+                <p><strong>Nome:</strong> {{participante.nome}}</p>
+                <p><strong>CPF:</strong> {{participante.cpf}}</p>
+                <p><strong>Email:</strong> {{participante.email}}</p>
+                <p><strong>Data de Nascimento:</strong> {{participante.nascimento}}</p>
+                <a href="/participante/perfil/editar" class="btn btn-sm btn-primary mt-2">Editar Perfil</a>
+            </div>
+        </div>
+
+        <!-- Eventos Inscritos -->
+        <div class="card mb-4">
+            <div class="card-header">Eventos Inscritos</div>
+            <div class="card-body">
+                {{#eventosInscritos}}
+                <div class="mb-3">
+                    <h5>{{nome}}</h5>
+                    <p><strong>Data de Início:</strong> {{data_inicio}}</p>
+                    <a href="/participante/evento/{{id}}" class="btn btn-sm btn-primary">Ver Evento</a>
+                </div>
+                <hr>
+                {{/eventosInscritos}}
+                {{^eventosInscritos}}
+                <p>Você não está inscrito em nenhum evento.</p>
+                {{/eventosInscritos}}
+            </div>
+        </div>
+
+        <!-- Eventos Disponíveis -->
+        <div class="card mb-4">
+            <div class="card-header">Eventos Disponíveis</div>
+            <div class="card-body">
+                {{#eventosNaoInscritos}}
+                <div class="mb-3">
+                    <h5>{{nome}}</h5>
+                    <p><strong>Data de Início:</strong> {{data_inicio}}</p>
+                    <a href="/participante/evento/{{id}}" class="btn btn-sm btn-success">Ver Evento</a>
+                </div>
+                <hr>
+                {{/eventosNaoInscritos}}
+                {{^eventosNaoInscritos}}
+                <p>Não há eventos disponíveis no momento.</p>
+                {{/eventosNaoInscritos}}
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>

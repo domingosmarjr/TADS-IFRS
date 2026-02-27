@@ -1,0 +1,49 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header */
+#header {
+    width: 100%;
+    background-color: #1f2937; /* tom moderno escuro */
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; mantém o título à esquerda e os links à direita */
+}
+
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.navbar-nav .nav-link {
+    margin: 0 10px; /* espaço entre os itens */
+    font-size: 1.1rem;
+}
+
+
+body, html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1; /* empurra o footer para baixo */
+}
+

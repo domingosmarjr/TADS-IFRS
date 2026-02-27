@@ -1,0 +1,14 @@
+Mini Projeto - SISTEMA DE EVENTOS (SISE)
+
+Proposta:
+Esse projeto surgiu de um trabalho da disciplina de "Implementação e Operação de Banco de Dados", no curso de Análise e Desenvolvimento de Sistemas do IFRS.
+A propostar consistia em desenvolver páginas diferentes para usuários diferentes de um "sistema de eventos". A partir dessa proposição, pensei em aprofundar os
+conhecimentos que vão desde a modelagem de um banco, até a página de interação do usuário. Para isso, me dediquei em desenvolver desde a modelagem do banco, até
+diversas páginas e suas interações. Logo, o requisito de um trabalho simples, se tornou um anseio por desenvolver um mini sistema, ou um MVP básico para treinar
+os conhecimentos e por em prática o aprendizado.
+
+SISE - Sistema de Eventos
+> Consiste num sistema para cadastro, visualização, inscrição e operacionalização de eventos. Diversos atores interagem nosso sistema, desde o usuário que pode
+inscrever-se em eventos, passando pelos organizadores de eventos, palestrantes e o próprio admin do sistema geral. 
+
+Descrição:

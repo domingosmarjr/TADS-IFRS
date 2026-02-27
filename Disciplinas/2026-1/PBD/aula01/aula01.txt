@@ -1,0 +1,30 @@
+PROJETO HELPDESK
+- Usuário
+    id serial pk
+    nome character varying(200)
+    email character varying(200) not null unique
+    senha character varying(200) not null
+
+- Tarefas
+    id serial pk
+    descricao text not null
+    titulo text not null
+    data_hora_criacao timestamp default current_timestamp
+    criador_id integer fk usuario(id)
+    responsavel_id integer fk usuario(id)
+    equipamento_id integer fk equiapemtno(id)
+    finalizado timestamp
+    status text
+
+- Status
+    id serial pk
+    tarefa_id fk tarefa(id)
+    situacao text not null
+    data_hora timestamp default current_timestamp
+
+- Equipamento
+    id serial pk
+    descricao text not null
+    localizacao text not null
+
+

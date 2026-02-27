@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Eventos - SISE | Participantes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" 
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light flex-column text-center">
+            <a class="navbar-brand mb-2" href="/">
+                SISE - SISTEMA DE EVENTOS
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/landing/eventos">Eventos</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cadastro">Cadastre-se</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container mt-5">
+            <h1 class="mb-4">Gerenciar Palestrantes</h1>
+
+            <!-- Botões -->
+            <div class="mb-3">
+                <a href="/admin/palestrante/novo" class="btn btn-primary">Cadastrar Palestrante</a>
+                <a href="/area/admin" class="btn btn-light">Voltar ao Dashboard</a>
+            </div>
+
+            <!-- Lista de Palestrantes -->
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>CPF</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#palestrantes}}
+                    <tr>
+                        <td>{{nome}}</td>
+                        <td>{{email}}</td>
+                        <td>{{cpf}}</td>
+                        <td>
+                            <a href="/admin/palestrantes/dados/{{id}}" class="btn btn-sm btn-info">Detalhes</a>
+                            <a href="/admin/palestrantes/editar/{{id}}" class="btn btn-sm btn-warning">Editar</a>
+
+                            <form action="/admin/palestrantes/excluir/{{id}}" method="post" style="display:inline-block;">
+                                <button type="submit" class="btn btn-sm btn-danger"
+                                        onclick="return confirm('Deseja realmente excluir este palestrante?')">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {{/palestrantes}}
+
+                    {{^palestrantes}}
+                    <tr>
+                        <td colspan="5" class="text-center text-muted">Nenhum palestrante cadastrado.</td>
+                    </tr>
+                    {{/palestrantes}}
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

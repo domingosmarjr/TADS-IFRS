@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Eventos - SISE | Evento</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light flex-column text-center">
+        <a class="navbar-brand mb-2" href="/">SISE - SISTEMA DE EVENTOS</a>
+    </nav>
+</header>
+
+<main class="container my-4">
+
+    <div class="mb-3">
+        <a href="/participante/perfil" class="btn btn-secondary">&larr; Voltar para o Perfil</a>
+    </div>
+
+    <h1 class="mb-4">{{evento.nome}}</h1>
+
+    <!-- Informações do Evento -->
+    <div class="card mb-4">
+        <div class="card-header">Informações do Evento</div>
+        <div class="card-body">
+
+            {{#bannerBase64}}
+            <div class="text-center mb-4">
+                <img src="data:image/jpeg;base64,{{bannerBase64}}" 
+                     class="img-fluid rounded shadow-sm"
+                     alt="Banner do Evento"
+                     style="max-width: 650px; width: 100%; height: auto; object-fit: contain; border: 1px solid black;">
+            </div>
+            {{/bannerBase64}}
+
+            <p><strong>ID:</strong> {{evento.id}}</p>
+            <p><strong>Nome:</strong> {{evento.nome}}</p>
+
+            <p><strong>Data de Início:</strong> {{evento.data_inicio}}</p>
+            <p><strong>Hora de Início:</strong> {{evento.hora_inicio}}</p>
+
+            <p><strong>Data de Término:</strong> {{evento.data_fim}}</p>
+            <p><strong>Hora de Término:</strong> {{evento.hora_fim}}</p>
+
+            <p><strong>Local:</strong>
+                {{#evento.local}}
+                    {{evento.local}}
+                {{/evento.local}}
+                {{^evento.local}}
+                    Não informado
+                {{/evento.local}}
+            </p>
+
+            <hr>
+
+            <h5>Descrição</h5>
+            <p>
+                {{#evento.detalhes.descricao}}
+                    {{evento.detalhes.descricao}}
+                {{/evento.detalhes.descricao}}
+                {{^evento.detalhes.descricao}}
+                    Sem detalhes.
+                {{/evento.detalhes.descricao}}
+            </p>
+
+            <h5>Detalhes (JSON completo):</h5>
+            <pre>{{evento.detalhes}}</pre>
+
+        </div>
+    </div>
+
+    <!-- Inscrição / Desinscrição -->
+    <div class="card mb-4">
+        <div class="card-body text-center">
+
+            {{#inscrito}}
+            <form action="/participante/evento/{{evento.id}}/desinscrever" method="post">
+                <button type="submit" class="btn btn-danger btn-lg">Desinscrever</button>
+            </form>
+            {{/inscrito}}
+
+            {{^inscrito}}
+            <form action="/participante/evento/{{evento.id}}/inscrever" method="post">
+                <button type="submit" class="btn btn-success btn-lg">Inscrever</button>
+            </form>
+            {{/inscrito}}
+
+        </div>
+    </div>
+
+    <!-- Palestras -->
+    <div class="card mb-4">
+        <div class="card-header">Palestras</div>
+        <div class="card-body">
+
+            {{#palestras}}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5>{{titulo}}</h5>
+                    <p><strong>Duração:</strong> {{duracao}} minutos</p>
+                    <p><strong>Início:</strong> {{data}}</p>
+
+                    <h6>Palestrantes</h6>
+                    {{#palestrantes}}
+                    <div class="border rounded p-2 mb-2">
+                        <p><strong>Nome:</strong> {{nome}}</p>
+                        <p><strong>Email:</strong> {{email}}</p>
+                        <p><strong>Biografia:</strong> {{biografia}}</p>
+                    </div>
+                    {{/palestrantes}}
+                </div>
+            </div>
+            {{/palestras}}
+
+            {{^palestras}}
+            <p>Não há palestras cadastradas para este evento.</p>
+            {{/palestras}}
+
+        </div>
+    </div>
+
+</main>
+
+</body>
+</html>
