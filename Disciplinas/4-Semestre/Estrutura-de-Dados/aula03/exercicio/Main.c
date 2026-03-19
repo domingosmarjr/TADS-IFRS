@@ -13,10 +13,6 @@
 //     double v_condominio;
 // } Apartamento;
 
-// typedef struct proprietario {
-//     char nome[30];
-//     char cpf[14];
-// } Proprietario;
 
 int main() {
 
