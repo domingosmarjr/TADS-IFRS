@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div></div> 
+		<script>
+  document.querySelector("div").innerHTML=
+  ` Objeto screen
+   <br>screen.width: ${screen.width}
+  <br> screen.height : ${screen.height}  
+  <br> screen.availWidth: ${screen.availWidth}
+  <br> screen.availHeight: ${screen.availHeight}
+  
+  <br><br>window
+  <br> window.innerWidth : ${window.innerWidth}
+  <br> window.innerHeight : ${window.innerHeight}
+
+  <br><br>location
+  <br> location.href : ${location.href}
+  <br> location.hostname : ${location.hostname}
+  <br> location.pathname : ${location.pathname}
+  <br> location.protocol : ${location.protocol}
+  <br>location.assign() - carrega um novo doc
+  
+  <br><br>history
+  history.back() - vai para página anterior
+  history.forward() - vai para próxima página 
+
+  <br><br>Navigator - Algumas propriedades Obsoletas
+  <br> Versão do Navegador: ${navigator.appVersion}
+  <br> Sistema operacional : ${navigator.platform}  
+  `
+ 
+   
+   //notação - template string – delimitado pela crase
+		 
+     </script>
+     
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #t1{color:blue}
+    </style>
+</head>
+<body>
+    
+<div class="um"></div>
+<div class="dois"></div>
+<div class="tres"></div>
+<div class="quatro"></div>
+<hr>
+<h1></h1>
+<h2></h2>
+
+<script>
+document.querySelector(".um").innerHTML="1 Ola Mundo!";
+document.querySelector(".dois").innerHTML="2 <b>Ola Mundo!</b>";// innerHTML insere como código HTML
+document.querySelector(".tres").textContent="3 Ola Mundo!";
+document.querySelector(".quatro").textContent="4 <b> Ola Mundo!</b>";// textContent insere como texto 
+
+//-----------------------------
+
+document.querySelector("h1").textContent=
+"Título Principal";
+
+document.querySelector("h2").innerHTML=
+`Subtítulo com <i>itálico</i>, 
+<span style='color:red;'>cor vermelha</span> e 
+<span id="t1">cor azul</span>.`;
+
+</script>
+
+
+</body>
+</html>

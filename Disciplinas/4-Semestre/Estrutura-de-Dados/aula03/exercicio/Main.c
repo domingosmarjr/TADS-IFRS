@@ -3,24 +3,13 @@
 #include <string.h>
 #include "Apartamentos.h"
 
-// typedef struct Apartamento {
-//     char condominio[30];
-//     int num;
-//     int andar;
-//     int qtd_comodos;
-//     int box;
-//     double v_aluguel;
-//     double v_condominio;
-// } Apartamento;
-
-
 int main() {
 
     printf("\n****** Início da Programa Apartamento  *******\n");
 
     // 1) Criar apartamentos
-    Apartamento ap1 = {"Trevo", 402, 4, 4, 13, 600.00, 200.00};
-    Apartamento ap2 = {"Trevo", 302, 3, 4, 11, 500.00, 250.00};
+    Apartamento ap1 = {"Trevo", 101, 4, 4, 13, 600.00, 200.00};
+    Apartamento ap2 = {"Trevo", 201, 3, 4, 11, 500.00, 250.00};
 
     // 2) Função imprir valores do apartamento
     mostraDadosApartamento(ap1);
@@ -80,10 +69,6 @@ int main() {
     mostraDadosApartamento(ap1);
     free(novoProprietario);
     
-
-
-
-
     printf("\n****** Fim do Programa Apartamento  *******\n\n");
     exit(0);
 

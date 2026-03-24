@@ -1,0 +1,94 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "Festa.h"
+
+int main()
+{
+    int opcao;
+    Festa *festa = (Festa*)malloc(sizeof(Festa));
+    iniciarFesta(festa);
+
+    // FESTA TESTE - Descomente para não ter que inserir dados para testagem.
+    // 
+    strcpy(festa->nome, "Aniversário de Pedro");
+    strcpy(festa->local, "Casa do Mario");
+    festa->data.dia = 13;
+    festa->data.mes = 3;
+    festa->data.ano = 2026;
+    festa->horario.hora = 18;
+    festa->horario.minuto =  30;
+
+    // Cadastra uma festa nova, caso não tenha alguma cadastrada.
+    // if(strlen(festa->nome) == 0) cadastraFesta(festa);
+
+    do
+    {
+        printf("\n|=== BEM-VINDO AO SISTEMA DA SUA FESTA ===\n");
+        printf("|Digite a opção para navegar na sua festa:\n");
+        printf("|\t1. Dados da Festa\n");
+        printf("|\t2. Editar dados da Festa\n");
+        printf("|\t3. Cadastrar Convidado\n");
+        printf("|\t4. Cadastrar Trabalhador\n");
+        printf("|\t0. Sair do sistema\n|\n");
+        printf("|Opção: ");
+        scanf("%d", &opcao);
+
+        switch (opcao)
+        {
+        case 1:
+            mostrarFesta(festa);
+            break;
+        
+        case 2:
+            editarFesta(festa);
+            break;
+
+        case 3:
+            cadastraConvidado(festa);
+            break;
+
+        case 4:
+            cadastraTrabalhador(festa);
+            break;
+        
+        default:
+            break;
+        }
+
+    } while (opcao != 0);
+
+
+    // BATERIA DE TESTES
+    printf("\n%s", festa->convidados[0].nome);
+    printf("\nCod:%d", festa->convidados[0].codigo);
+    printf("\nTel:%s", festa->convidados[0].telefone);
+    printf("\nConfirmou: %d", festa->convidados[0].confirmou);
+
+    printf("\n%s", festa->convidados[1].nome);
+    printf("\nCod:%d", festa->convidados[1].codigo);
+    printf("\nTel:%s", festa->convidados[1].telefone);
+    printf("\nConfirmou: %d", festa->convidados[1].confirmou);
+
+    printf("\nTConvidados: %d\n\n", festa->totalConvidados);    
+
+    mostrarConvidado(&festa->convidados[0]);
+    mostrarConvidado(&festa->convidados[1]);
+    mostrarConvidado(&festa->convidados[2]);
+
+
+    free(festa);
+    exit(0);
+}
+
+/*
+    DATA
+    HORARIO
+    CONVIDADO
+    - int cadastraConvidado(Festa *festa)
+        cadastra novo convidado na festa
+        insere os dados do convidado terminal
+    TRABALHADOR
+    CONVITE
+    FESTA
+*/

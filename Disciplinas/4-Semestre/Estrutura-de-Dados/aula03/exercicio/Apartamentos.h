@@ -9,7 +9,7 @@
 
 // ESTRUTURAS
 
-typedef struct {
+typedef struct apartamento {
     char condominio[30];
     int num, andar, qtd_comodos, box;
     double v_aluguel, v_condominio;
