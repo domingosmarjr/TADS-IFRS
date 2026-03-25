@@ -15,16 +15,22 @@ void iniciarFesta (Festa *festa) {
 void cadastraFesta (Festa *festa) {
     printf("Nome da Festa: ");
     scanf("%s", festa->nome);
+    
     printf("Local da Festa: ");
     scanf("%s", festa->local);
+    
     printf("Dia: ");
     scanf("%d", &festa->data.dia);
+    
     printf("Mês: ");
     scanf("%d", &festa->data.mes);
+    
     printf("Ano: ");
     scanf("%d", &festa->data.ano);
+    
     printf("Hora: ");
     scanf("%d", &festa->horario.hora);
+    
     printf("Minutos: ");
     scanf("%d", &festa->horario.minuto);
 };
@@ -35,7 +41,7 @@ void mostrarFesta(Festa *festa) {
         printf("\nDados não cadastrados.\n");
         return;
     } else {
-        printf("\n|=== FESTA - %s ===\n", festa->nome);
+        printf("\n|%s\n", festa->nome);
         printf("|- Local: %s\n", festa->local);
         printf("|- Data: %d/%d/%d\n", festa->data.dia, festa->data.mes, festa->data.ano);
         printf("|- Horário: %d:%d\n", festa->horario.hora, festa->horario.minuto);
@@ -48,9 +54,9 @@ void mostrarFesta(Festa *festa) {
 // EDITAR DADOS GERAIS DA FESTA
 void editarFesta(Festa *festa) {
     printf("NOME: ");
-    scanf("%s", festa->nome);
+    scanf(" %99[^\n]", festa->nome);
     printf("LOCAL: ");
-    scanf("%s", festa->local);
+    scanf(" %99[^\n]", festa->local);
     printf("DIA: ");
     scanf("%d", &festa->data.dia);
     printf("MÊS: ");
@@ -89,7 +95,26 @@ int cadastraConvidado (Festa *festa) {
     return 1;
 };
 
+// CONFIRMAR PRESENÇA DE CONVIDADO
+int confirmarPresenca (Festa *festa) {
+    int cod;
+    printf("> Insira o código do convidado: ");
+    scanf("%d", &cod);
 
+    for (int i = 0; i < festa->totalConvidados; i++) {
+        if (festa->convidados[i].codigo == cod) {
+            festa->convidados[i].confirmou = 1;
+            printf("\nConvidado confirmado!\n");
+            return 1;
+        }
+    }
+    printf("Convidado não encontrado.");
+    return 0;
+}
+
+
+// CADASTRA NOVO TRABALHADOR
+// - Não verifica duplicatas
 int cadastraTrabalhador (Festa *festa) {
     if (festa->totalTrabalhadores >= 50) {
         printf("Limite de trabalhadores atingido.");
@@ -110,9 +135,12 @@ int cadastraTrabalhador (Festa *festa) {
 
 }
 
-
+// MOSTRAR O CONVIDADO
 void mostrarConvidado (Convidado *con) {
-    printf("|CONVIDADO:");
-    printf("\n|Cod\t|Nome\t\t\t|Telefone\t|Confirmou\n");
-    printf("|%d\t|%s\t|%s\t|%d\n", con->codigo, con->nome, con->telefone, con->confirmou);
+    printf("| %d |Nome: %s\n|   |\tTelefone: %s\n|   |\tConfirmado: %d\n", con->codigo, con->nome, con->telefone, con->confirmou);
 }
+
+
+
+
+

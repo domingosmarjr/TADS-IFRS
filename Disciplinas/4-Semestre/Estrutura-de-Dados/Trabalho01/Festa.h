@@ -44,4 +44,9 @@ void mostrarFesta(Festa *festa);
 
 void mostrarConvidado (Convidado *con);
 
+
+
+int confirmarPresenca (Festa *festa);
+
+
 #endif

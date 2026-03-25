@@ -25,7 +25,7 @@ int main()
     do
     {
         printf("\n|=== BEM-VINDO AO SISTEMA DA SUA FESTA ===\n");
-        printf("|Digite a opção para navegar na sua festa:\n");
+        printf("| Digite a opção para navegar na sua festa:\n");
         printf("|\t1. Dados da Festa\n");
         printf("|\t2. Editar dados da Festa\n");
         printf("|\t3. Cadastrar Convidado\n");
@@ -72,9 +72,15 @@ int main()
 
     printf("\nTConvidados: %d\n\n", festa->totalConvidados);    
 
+
+    confirmarPresenca(festa);
+
+    // printf("\n|Cod\t|Nome\t\t\t\t|Telefone\t|Confirmou\n");
+    printf("\n|Cod|\n");
     mostrarConvidado(&festa->convidados[0]);
     mostrarConvidado(&festa->convidados[1]);
     mostrarConvidado(&festa->convidados[2]);
+
 
 
     free(festa);
