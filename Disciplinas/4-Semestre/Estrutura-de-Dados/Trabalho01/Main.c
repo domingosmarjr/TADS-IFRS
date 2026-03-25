@@ -26,10 +26,15 @@ int main()
     {
         printf("\n|=== BEM-VINDO AO SISTEMA DA SUA FESTA ===\n");
         printf("| Digite a opção para navegar na sua festa:\n");
-        printf("|\t1. Dados da Festa\n");
-        printf("|\t2. Editar dados da Festa\n");
-        printf("|\t3. Cadastrar Convidado\n");
-        printf("|\t4. Cadastrar Trabalhador\n");
+        printf("|\t1. Cadastrar Convidado\n");
+        printf("|\t2. Cadastrar Trabalhador\n");
+        printf("|\t3. Criar Convite\n");
+        printf("|\t4. Confirmar Presença\n");
+        printf("|\t5. Listar Convidados\n");
+        printf("|\t6. Listar Trabalhadores\n");
+        printf("|\t7. Listar Confirmados\n");
+        printf("|\t8. Mostrar Festa\n");
+        printf("|\t9. Calcular Total de Pagamentos\n|\n");
         printf("|\t0. Sair do sistema\n|\n");
         printf("|Opção: ");
         scanf("%d", &opcao);
@@ -37,20 +42,40 @@ int main()
         switch (opcao)
         {
         case 1:
-            mostraFesta(festa);
+            cadastraConvidado(festa);
             break;
         
         case 2:
-            editarFesta(festa);
+            cadastraTrabalhador(festa);
             break;
 
         case 3:
-            cadastraConvidado(festa);
+            criarConvite(festa);
             break;
 
         case 4:
-            cadastraTrabalhador(festa);
+            confirmarPresenca(festa);
             break;
+
+        case 5:
+            listarConvidados(festa);
+            break;
+
+        case 6:
+            listarTrabalhadores(festa);
+            break;
+        
+        case 7:
+            listarConfirmados(*festa);
+            break;
+
+        case 8:
+            mostraFesta(festa);
+            break;        
+        
+        case 9:
+            mostrarTotalPagamentos(festa);
+            break;        
         
         default:
             break;
@@ -73,13 +98,18 @@ int main()
     printf("\nTConvidados: %d\n\n", festa->totalConvidados);    
 
     confirmarPresenca(festa);
-    mostrarConvidado(&festa->convidados[0]);
+    mostrarConvidado(festa->convidados[0]);
     cancelaPresenca(festa);
     // printf("\n|Cod\t|Nome\t\t\t\t|Telefone\t|Confirmou\n");
     printf("\n|Cod|\n");
-    mostrarConvidado(&festa->convidados[0]);
-    mostrarConvidado(&festa->convidados[1]);
-    mostrarConvidado(&festa->convidados[2]);
+    mostrarConvidado(festa->convidados[0]);
+    mostrarConvidado(festa->convidados[1]);
+    mostrarConvidado(festa->convidados[2]);
+
+    
+    atualizarTextoConvites(festa);
+
+    mostraConvite(festa->convites[0]);
 
     free(festa);
     exit(0);

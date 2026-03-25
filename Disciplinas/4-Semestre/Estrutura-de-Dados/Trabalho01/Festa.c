@@ -1,15 +1,17 @@
 #include "Festa.h"
 #include "Convidado.h"
+#include "Convite.h"
 #include <string.h>
 
 // ====== FESTA =======
-// INICIALIZADOR DE FESTA
+// INICIALIZADOR DE FESTA [REVISADO]
 void iniciarFesta (Festa *festa) {
     festa->totalConvidados = 0;
     festa->totalConvites = 0;
     festa->totalTrabalhadores = 0;
     festa->nome[0] = '\0';
     festa->local[0] = '\0';
+    festa->convites = (Convite*)malloc(sizeof(Convite) * 50);
 };
 
 // CADASTRA FESTA
@@ -36,19 +38,23 @@ void cadastraFesta (Festa *festa) {
     scanf("%d", &festa->horario.minuto);
 };
 
-// MOSTRA DADOS DA FESTA
+
+// MOSTRA DADOS DA FESTA [REVISADO]
 void mostraFesta(Festa *festa) {
     if (strlen(festa->nome) == 0) {
         printf("\nDados não cadastrados.\n");
         return;
     } else {
-        printf("\n|%s\n", festa->nome);
+        printf("\n|===== %s\n", festa->nome);
         printf("|- Local: %s\n", festa->local);
         printf("|- Data: %d/%d/%d\n", festa->data.dia, festa->data.mes, festa->data.ano);
         printf("|- Horário: %d:%d\n", festa->horario.hora, festa->horario.minuto);
         printf("|- Convidados: %d\n", festa->totalConvidados);
         printf("|- Trabalhadores: %d\n", festa->totalTrabalhadores);
-        printf("|==============================\n\n");
+        printf("|- Convites: %d\n", festa->totalConvites);
+        printf("|- Total da Festa: %.2f", calcularTotalPagamentos(festa));
+        listarConvidados(festa);
+        listarTrabalhadores(festa);
     }
 }
 
@@ -72,8 +78,37 @@ void editarFesta(Festa *festa) {
 }
 
 
-// ====== CONVIDADO =======
-// CADASTRA CONVIDADO NA FESTA
+
+
+
+
+
+
+// CANCELA PRESENÇA DE CONVIDADO
+int cancelaPresenca (Festa *festa) {
+    int cod;
+    printf(">Código do convidado: ");
+    scanf("%d", &cod);
+
+    for (int i = 0; i < festa->totalConvidados; i++) {
+        if (festa->convidados[i].codigo == cod) {
+            festa->convidados[i].confirmou = 0;
+            printf("\nPresença cancelada!\n");
+            return 1;
+        }
+    }
+    printf("Convidado não encontrado.");
+    return 0;
+}
+
+
+
+
+
+
+
+
+// CADASTRA CONVIDADO NA FESTA [REVISADO]
 // - Não verifica duplicatas! (todo)
 int cadastraConvidado (Festa *festa) {
     if (festa->totalConvidados >= 100) {
@@ -95,12 +130,12 @@ int cadastraConvidado (Festa *festa) {
     festa->convidados[festa->totalConvidados] = *novo;
     festa->totalConvidados++;
 
+    printf("\n> Convidado cadastrado.\n");
+
     return 1;
 };
 
-void mostraConvidado (Convidado c) { };
-
-// CONFIRMAR PRESENÇA DE CONVIDADO
+// CONFIRMAR PRESENÇA DE CONVIDADO [REVISADO]
 int confirmarPresenca (Festa *festa) {
     int cod;
     printf(">Código do convidado: ");
@@ -117,29 +152,7 @@ int confirmarPresenca (Festa *festa) {
     return 0;
 }
 
-// CANCELA PRESENÇA DE CONVIDADO
-int cancelaPresenca (Festa *festa) {
-    int cod;
-    printf(">Código do convidado: ");
-    scanf("%d", &cod);
-
-    for (int i = 0; i < festa->totalConvidados; i++) {
-        if (festa->convidados[i].codigo == cod) {
-            festa->convidados[i].confirmou = 0;
-            printf("\nPresença cancelada!\n");
-            return 1;
-        }
-    }
-    printf("Convidado não encontrado.");
-    return 0;
-}
-
-void listarConfirmados (Festa f) { };
-
-int buscarConvidado (Festa *festa, int codigo) { };
-
-// ====== TRABALHADOR =======
-// CADASTRA NOVO TRABALHADOR
+// CADASTRA NOVO TRABALHADOR [REVISADO]
 // - Não verifica duplicatas
 int cadastraTrabalhador (Festa *festa) {
     if (festa->totalTrabalhadores >= 50) {
@@ -161,19 +174,145 @@ int cadastraTrabalhador (Festa *festa) {
 
 }
 
-void mostraTrabalhador (Trabalhador t) { };
+// MOSTRAR O TRABALHADOR [REVISADO]
+void mostraTrabalhador (Trabalhador trabalhador) { 
+    printf("| %d |Nome: %s\n|   |\tFunção: %s\n|   |\tValor: %.2f\n", trabalhador.codigo, trabalhador.nome, trabalhador.funcao, trabalhador.pagamento);
+};
 
-float calcularTotalPagamentos(Festa *festa) {};
+// LISTAR OS TRABALHADORES [REVISADO]
+void listarTrabalhadores (Festa *festa) {
+    printf("|====================\n| TRABALHADORES: \n");
+    if (festa->totalTrabalhadores <= 0) {
+        printf("| Sem trabalhadores cadastrados.\n");
+    } else {
+        for (int i = 0; i < festa->totalTrabalhadores; i++) {
+            mostraTrabalhador(festa->trabalhadores[i]);
+        }
+    }
+    printf("|====================\n");
 
-int buscarTrabalhador (Festa *festa, int codigo) {};
+};
 
+// MOSTRAR O CONVIDADO [REVISADO]
+void mostrarConvidado (Convidado con) {
+    printf("| %d |Nome: %s\n|   |\tTelefone: %s\n|   |\tConfirmado: %d\n", con.codigo, con.nome, con.telefone, con.confirmou);
+}
 
-// MOSTRAR O CONVIDADO
-void mostrarConvidado (Convidado *con) {
-    printf("| %d |Nome: %s\n|   |\tTelefone: %s\n|   |\tConfirmado: %d\n", con->codigo, con->nome, con->telefone, con->confirmou);
+// LISTAR CONVIDADOS [REVISADO]
+void listarConvidados (Festa *festa) {
+    printf("\n|====================\n| CONVIDADOS: \n");
+    if (festa->totalConvidados <= 0) {
+        printf("| Sem convidados cadastrados.\n");
+    } else {
+        for (int i = 0; i < festa->totalConvidados; i++) {
+            mostrarConvidado(festa->convidados[i]);
+        }
+    }
+    printf("|====================\n");
+}
+
+// RETORNA QUANTIDADE DE CONFIRMADOS [REVISADO]
+int calcularConfirmados (Festa *festa) {
+    int confirmados = 0;
+    for (int i = 0; i < festa->totalConvidados; i++) {
+        if (festa->convidados[i].confirmou == 1) confirmados++;
+    }
+    return confirmados;
+}
+
+// LISTA OS CONFIRMADOS NA FESTA [REVISADO]
+void listarConfirmados (Festa festa) {
+    printf("\n|====================\n| CONVIDADOS CONFIRMADOS: \n");
+    if (calcularConfirmados(&festa) <= 0) {
+        printf("| Sem convidados confirmados.\n");
+    } else {
+        for (int i = 0; i < festa.totalConvidados; i++) {
+            if (festa.convidados[i].confirmou == 1) {
+                mostrarConvidado(festa.convidados[i]);
+            }
+        }
+    }
+    printf("|====================\n");
+};
+
+// RETORNA VALOR TOTAL DE PAGAMENTOS [REVISADO]
+float calcularTotalPagamentos (Festa *festa) {
+    float valor = 0.0;
+
+    for (int i = 0; i < festa->totalTrabalhadores; i++) {
+        valor += festa->trabalhadores[i].pagamento;
+    }
+    return valor;
+}
+
+// MOSTRAR TOTAL DE PAGAMENTOS [REVISADO]
+void mostrarTotalPagamentos (Festa *festa) {
+    printf("\n>Total Pagamentos: %.2f\n", calcularTotalPagamentos(festa));
 }
 
 
-// ====== MEMÓRIA =======
+
+
+
+
+
+
+
+
+
+
+int criarConvite (Festa *festa) {
+
+    int cod;
+    printf("Insira o código do usuário:");
+    scanf("%d", &cod);
+
+    for (int i = 0; i < festa->totalConvidados; i++) {
+        
+        if (festa->convidados[i].codigo == cod) {
+            Convite *convite = &festa->convites[festa->totalConvites];
+            
+            convite->convidado = &festa->convidados[i];
+            convite->codigo = festa->totalConvites;
+            strcpy(convite->mensagem,"");
+            
+            festa->totalConvites++;
+
+            printf("Convite criado para o convidado.\n");
+
+            return 1;
+        }
+    }
+    printf("Convidado não encontrado ou já possui convite.\n");
+    return 0;
+};
+
+void adicionarDataConvite (Convite *convite, Festa *festa) {
+    char info[100];
+    snprintf(info, sizeof(info), "\n|\tData: %02d/%02d/%0d \n|\tHorário: %02d:%02d", festa->data.dia, festa->data.mes, festa->data.ano, festa->horario.hora, festa->horario.minuto);
+
+    strncat (convite->mensagem, info, sizeof(convite->mensagem) - strlen(convite->mensagem) -1);
+}
+
+void atualizarTextoConvites(Festa *festa) {
+    char msg[200];
+    printf("Insira novo texto do convite:");
+    scanf("|\t %[^\n]", msg);
+
+    for (int i = 0; i < festa->totalConvites; i++) {
+        strcpy(festa->convites[i].mensagem, msg);
+        adicionarDataConvite(&festa->convites[i], festa);
+    }
+
+    printf("Mensagens atualizadas com sucesso.\n");
+}
+
+void mostraConvite (Convite conv) {
+    printf("| CONVITE\n");
+    printf("|\tOlá %s!\n", conv.convidado->nome);
+    printf("\t%s\n", conv.mensagem);
+}
+
+
 
 

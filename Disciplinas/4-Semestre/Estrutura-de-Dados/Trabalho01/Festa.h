@@ -42,11 +42,23 @@ void editarFesta(Festa *festa);
 
 void mostraFesta(Festa *festa);
 
-void mostrarConvidado (Convidado *con);
+void mostrarConvidado (Convidado con);
 
-
+int criarConvite (Festa *festa);
+void mostraConvite (Convite conv);
+void atualizarTextoConvites(Festa *festa);
 
 int confirmarPresenca (Festa *festa);
 int cancelaPresenca (Festa *festa);
+
+float calcularTotalPagamentos (Festa *festa);
+void mostrarTotalPagamentos (Festa *festa);
+
+void listarConvidados (Festa *festa);
+void listarConfirmados (Festa festa);
+int calcularConfirmados (Festa *festa);
+
+void mostraTrabalhador (Trabalhador trabalhador);
+void listarTrabalhadores (Festa *festa);
 
 #endif
