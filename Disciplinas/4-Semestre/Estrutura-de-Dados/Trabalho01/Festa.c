@@ -2,6 +2,7 @@
 #include "Convidado.h"
 #include <string.h>
 
+// ====== FESTA =======
 // INICIALIZADOR DE FESTA
 void iniciarFesta (Festa *festa) {
     festa->totalConvidados = 0;
@@ -36,7 +37,7 @@ void cadastraFesta (Festa *festa) {
 };
 
 // MOSTRA DADOS DA FESTA
-void mostrarFesta(Festa *festa) {
+void mostraFesta(Festa *festa) {
     if (strlen(festa->nome) == 0) {
         printf("\nDados não cadastrados.\n");
         return;
@@ -67,9 +68,11 @@ void editarFesta(Festa *festa) {
     scanf("%d", &festa->horario.hora);
     printf("MINUTOS: ");
     scanf("%d", &festa->horario.minuto);
-    mostrarFesta(festa);
+    mostraFesta(festa);
 }
 
+
+// ====== CONVIDADO =======
 // CADASTRA CONVIDADO NA FESTA
 // - Não verifica duplicatas! (todo)
 int cadastraConvidado (Festa *festa) {
@@ -95,16 +98,18 @@ int cadastraConvidado (Festa *festa) {
     return 1;
 };
 
+void mostraConvidado (Convidado c) { };
+
 // CONFIRMAR PRESENÇA DE CONVIDADO
 int confirmarPresenca (Festa *festa) {
     int cod;
-    printf("> Insira o código do convidado: ");
+    printf(">Código do convidado: ");
     scanf("%d", &cod);
 
     for (int i = 0; i < festa->totalConvidados; i++) {
         if (festa->convidados[i].codigo == cod) {
             festa->convidados[i].confirmou = 1;
-            printf("\nConvidado confirmado!\n");
+            printf("\nPresença confirmada!\n");
             return 1;
         }
     }
@@ -112,7 +117,28 @@ int confirmarPresenca (Festa *festa) {
     return 0;
 }
 
+// CANCELA PRESENÇA DE CONVIDADO
+int cancelaPresenca (Festa *festa) {
+    int cod;
+    printf(">Código do convidado: ");
+    scanf("%d", &cod);
 
+    for (int i = 0; i < festa->totalConvidados; i++) {
+        if (festa->convidados[i].codigo == cod) {
+            festa->convidados[i].confirmou = 0;
+            printf("\nPresença cancelada!\n");
+            return 1;
+        }
+    }
+    printf("Convidado não encontrado.");
+    return 0;
+}
+
+void listarConfirmados (Festa f) { };
+
+int buscarConvidado (Festa *festa, int codigo) { };
+
+// ====== TRABALHADOR =======
 // CADASTRA NOVO TRABALHADOR
 // - Não verifica duplicatas
 int cadastraTrabalhador (Festa *festa) {
@@ -135,12 +161,19 @@ int cadastraTrabalhador (Festa *festa) {
 
 }
 
+void mostraTrabalhador (Trabalhador t) { };
+
+float calcularTotalPagamentos(Festa *festa) {};
+
+int buscarTrabalhador (Festa *festa, int codigo) {};
+
+
 // MOSTRAR O CONVIDADO
 void mostrarConvidado (Convidado *con) {
     printf("| %d |Nome: %s\n|   |\tTelefone: %s\n|   |\tConfirmado: %d\n", con->codigo, con->nome, con->telefone, con->confirmou);
 }
 
 
-
+// ====== MEMÓRIA =======
 
 

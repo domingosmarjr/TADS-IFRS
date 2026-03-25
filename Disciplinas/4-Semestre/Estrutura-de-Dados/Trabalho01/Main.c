@@ -37,7 +37,7 @@ int main()
         switch (opcao)
         {
         case 1:
-            mostrarFesta(festa);
+            mostraFesta(festa);
             break;
         
         case 2:
@@ -72,16 +72,14 @@ int main()
 
     printf("\nTConvidados: %d\n\n", festa->totalConvidados);    
 
-
     confirmarPresenca(festa);
-
+    mostrarConvidado(&festa->convidados[0]);
+    cancelaPresenca(festa);
     // printf("\n|Cod\t|Nome\t\t\t\t|Telefone\t|Confirmou\n");
     printf("\n|Cod|\n");
     mostrarConvidado(&festa->convidados[0]);
     mostrarConvidado(&festa->convidados[1]);
     mostrarConvidado(&festa->convidados[2]);
-
-
 
     free(festa);
     exit(0);

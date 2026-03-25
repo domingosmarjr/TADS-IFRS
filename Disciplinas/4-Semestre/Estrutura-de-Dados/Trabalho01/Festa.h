@@ -40,13 +40,13 @@ int cadastraTrabalhador (Festa *festa);
 
 void editarFesta(Festa *festa);
 
-void mostrarFesta(Festa *festa);
+void mostraFesta(Festa *festa);
 
 void mostrarConvidado (Convidado *con);
 
 
 
 int confirmarPresenca (Festa *festa);
-
+int cancelaPresenca (Festa *festa);
 
 #endif
