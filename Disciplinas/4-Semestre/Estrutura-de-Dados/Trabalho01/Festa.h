@@ -26,21 +26,13 @@ typedef struct festa {
     int totalConvites;
 } Festa;
 
-
-
 // ====== FESTA ======
-// Inicializador da Festa
 void iniciarFesta (Festa *festa);
-// Cadastro inicial da festa
 void cadastraFesta (Festa *festa);
-// Mostra dados da festa
+void insereDadosTeste (Festa *festa);
 void mostraFesta(Festa *festa);
-// Retorna valor total de pagamentos
 float calcularTotalPagamentos (Festa *festa);
-// Mostra dado de pagamento total
 void mostrarTotalPagamentos (Festa *festa);
-
-
 
 // ====== CONVIDADO ======
 // Cadastrar convidados
@@ -54,16 +46,12 @@ void listarConfirmados (Festa festa);
 int buscarConvidado(Festa *festa, int codigo);
 void getConvidado (Festa *festa);
 
-
-
 // ====== CONVITE ======
 int criarConvite (Festa *festa);
 void adicionarDataConvite (Convite *convite, Festa *festa);
 void atualizarTextoConvites(Festa *festa);
 void mostraConvite (Convite conv);
 void mostraConvitePorCodigo (Festa *festa);
-
-
 
 // ====== TRABALHADOR ======
 int cadastraTrabalhador (Festa *festa);
@@ -72,11 +60,7 @@ void listarTrabalhadores (Festa *festa);
 int buscarTrabalhador (Festa *festa, int codigo);
 void getTrabalhador (Festa *festa);
 
-
-
 // ====== MEMÓRIA ======
 void liberarMemoria(Festa *festa);
-
-
 
 #endif

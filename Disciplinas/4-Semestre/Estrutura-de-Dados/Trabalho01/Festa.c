@@ -40,6 +40,81 @@ void cadastraFesta (Festa *festa) {
     scanf("%d", &festa->horario.minuto);
 };
 
+// INSERE DADOS TESTE NO SISTEMA
+void insereDadosTeste (Festa *festa) {
+    // == PRESET FESTA
+    strcpy(festa->nome, "Aniversário de Pedro");
+    strcpy(festa->local, "Casa do Mario");
+    festa->data.dia = 13;
+    festa->data.mes = 3;
+    festa->data.ano = 2026;
+    festa->horario.hora = 18;
+    festa->horario.minuto =  30;
+
+    // == PRESET CONVIDADOS
+    festa->convidados[0].codigo = 0;
+    strcpy(festa->convidados[0].nome, "Leticia Silva");
+    strcpy(festa->convidados[0].telefone, "5332330001");
+    festa->totalConvidados++;
+
+    festa->convidados[1].codigo = 1;
+    strcpy(festa->convidados[1].nome, "Matheus Braga");
+    strcpy(festa->convidados[1].telefone, "5332330001");
+    festa->totalConvidados++;
+
+    festa->convidados[2].codigo = 2;
+    strcpy(festa->convidados[2].nome, "José Amorim");
+    strcpy(festa->convidados[2].telefone, "5332330001");
+    festa->totalConvidados++;
+
+    festa->convidados[3].codigo = 3;
+    strcpy(festa->convidados[3].nome, "Cecília Gomes");
+    strcpy(festa->convidados[3].telefone, "5332330001");
+    festa->totalConvidados++;
+
+    festa->convidados[4].codigo = 4;
+    strcpy(festa->convidados[4].nome, "Thomas Mathias");
+    strcpy(festa->convidados[4].telefone, "5332330001");
+    festa->totalConvidados++;
+
+    festa->convidados[5].codigo = 5;
+    strcpy(festa->convidados[5].nome, "Eduarda Ritt");
+    strcpy(festa->convidados[5].telefone, "5332330001");
+    festa->totalConvidados++;
+
+    // == PRESET TRABALHADORES
+    festa->trabalhadores[0].codigo = 0;
+    strcpy(festa->trabalhadores[0].nome,"Patrick Garcia");
+    strcpy(festa->trabalhadores[0].funcao, "DJ");
+    festa->trabalhadores[0].pagamento = 790.20;
+    festa->totalTrabalhadores++;
+
+    festa->trabalhadores[1].codigo = 1;
+    strcpy(festa->trabalhadores[1].nome, "Pedro Lopes");
+    strcpy(festa->trabalhadores[1].funcao, "Segurança");
+    festa->trabalhadores[1].pagamento = 300;
+    festa->totalTrabalhadores++;
+
+    festa->trabalhadores[2].codigo = 2;
+    strcpy(festa->trabalhadores[2].nome, "Felipe Treicha");
+    strcpy(festa->trabalhadores[2].funcao, "Cozinheiro");
+    festa->trabalhadores[2].pagamento = 500;
+    festa->totalTrabalhadores++;
+
+    festa->trabalhadores[3].codigo = 3;
+    strcpy(festa->trabalhadores[3].nome, "Larissa Peres");
+    strcpy(festa->trabalhadores[3].funcao, "Operador de Som");
+    festa->trabalhadores[3].pagamento = 400;
+    festa->totalTrabalhadores++;
+
+    festa->trabalhadores[4].codigo = 4;
+    strcpy(festa->trabalhadores[4].nome, "Atila Lemes");
+    strcpy(festa->trabalhadores[4].funcao, "Logística");
+    festa->trabalhadores[4].pagamento = 300.50;
+    festa->totalTrabalhadores++;
+};
+
+
 // MOSTRA DADOS DA FESTA [REVISADO]
 void mostraFesta(Festa *festa) {
     if (strlen(festa->nome) == 0) {
@@ -254,7 +329,7 @@ void mostraConvite (Convite conv) {
 
     if(conv.convidado != NULL) {
         printf("|\tOlá %s!\n", conv.convidado->nome);
-        printf("\t%s\n", conv.mensagem);
+        printf("|\t%s\n", conv.mensagem);
     } else {
         printf("|\tConvidado não encontrado.");
     }
