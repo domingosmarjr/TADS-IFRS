@@ -9,7 +9,7 @@
 #include "Trabalhador.h"
 #include "Convite.h"
 
-// FESTA
+// STRUCT
 typedef struct festa {
     char nome[100];
     char local[100];
@@ -26,39 +26,57 @@ typedef struct festa {
     int totalConvites;
 } Festa;
 
+
+
+// ====== FESTA ======
 // Inicializador da Festa
 void iniciarFesta (Festa *festa);
-
-// Cadastro nicial da festa
+// Cadastro inicial da festa
 void cadastraFesta (Festa *festa);
-
-// Cadastrar convidados
-int cadastraConvidado(Festa *festa);
-
-// Cadastrar trabalhador
-int cadastraTrabalhador (Festa *festa);
-
-void editarFesta(Festa *festa);
-
+// Mostra dados da festa
 void mostraFesta(Festa *festa);
-
-void mostrarConvidado (Convidado con);
-
-int criarConvite (Festa *festa);
-void mostraConvite (Convite conv);
-void atualizarTextoConvites(Festa *festa);
-
-int confirmarPresenca (Festa *festa);
-int cancelaPresenca (Festa *festa);
-
+// Retorna valor total de pagamentos
 float calcularTotalPagamentos (Festa *festa);
+// Mostra dado de pagamento total
 void mostrarTotalPagamentos (Festa *festa);
 
-void listarConvidados (Festa *festa);
-void listarConfirmados (Festa festa);
-int calcularConfirmados (Festa *festa);
 
+
+// ====== CONVIDADO ======
+// Cadastrar convidados
+int cadastraConvidado(Festa *festa);
+int confirmarPresenca (Festa *festa);
+int cancelaPresenca (Festa *festa);
+void mostrarConvidado (Convidado con);
+void listarConvidados (Festa *festa);
+int calcularConfirmados (Festa *festa);
+void listarConfirmados (Festa festa);
+int buscarConvidado(Festa *festa, int codigo);
+void getConvidado (Festa *festa);
+
+
+
+// ====== CONVITE ======
+int criarConvite (Festa *festa);
+void adicionarDataConvite (Convite *convite, Festa *festa);
+void atualizarTextoConvites(Festa *festa);
+void mostraConvite (Convite conv);
+void mostraConvitePorCodigo (Festa *festa);
+
+
+
+// ====== TRABALHADOR ======
+int cadastraTrabalhador (Festa *festa);
 void mostraTrabalhador (Trabalhador trabalhador);
 void listarTrabalhadores (Festa *festa);
+int buscarTrabalhador (Festa *festa, int codigo);
+void getTrabalhador (Festa *festa);
+
+
+
+// ====== MEMÓRIA ======
+void liberarMemoria(Festa *festa);
+
+
 
 #endif
