@@ -61,6 +61,7 @@ int buscarTrabalhador (Festa *festa, int codigo);
 void getTrabalhador (Festa *festa);
 
 // ====== MEMÓRIA ======
+void liberarMemoriaConvites(Festa *festa);
 void liberarMemoria(Festa *festa);
 
 #endif

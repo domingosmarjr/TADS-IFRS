@@ -159,9 +159,10 @@ int cadastraConvidado (Festa *festa) {
         return 0;
     }
 
-    Convidado *novo = (Convidado*)malloc(sizeof(Convidado));
+    Convidado *novo = &festa->convidados[festa->totalConvidados];
 
     novo->codigo = festa->totalConvidados;
+
     printf("|\tNome: ");
     // scanf("%s", novo->nome);
     // - Garante que tenha sobrenome no print
@@ -172,6 +173,7 @@ int cadastraConvidado (Festa *festa) {
 
     festa->convidados[festa->totalConvidados] = *novo;
     festa->totalConvidados++;
+
 
     printf("\n> Convidado cadastrado.\n");
 
@@ -289,7 +291,8 @@ int criarConvite (Festa *festa) {
             convite->convidado = &festa->convidados[i];
             convite->codigo = festa->totalConvites;
             strcpy(convite->mensagem,"");
-            
+            festa->convites[festa->totalConvites] = *convite;
+
             festa->totalConvites++;
 
             printf("Convite criado para o convidado.\n");
@@ -368,7 +371,7 @@ int cadastraTrabalhador (Festa *festa) {
         printf("Limite de trabalhadores atingido.");
         return 0;
     }   
-    Trabalhador *novo = (Trabalhador*)malloc(sizeof(Trabalhador));
+    Trabalhador *novo = &festa->trabalhadores[festa->totalTrabalhadores];
 
     novo->codigo = festa->totalTrabalhadores;
     printf("|\tNome: ");
@@ -421,5 +424,42 @@ void getTrabalhador (Festa *festa) {
 }
 
 
-// void liberarMemoria(Festa *festa) {}
-//  - liberar memória para os convites
+
+//================== MEMÓRIA ==================
+void liberarMemoriaConvites(Festa *festa) {
+    if (festa->convites != NULL) {
+            memset(festa->convites, 0, sizeof(Convite) * festa->totalConvites);
+            free(festa->convites);
+            festa->convites = NULL;
+        }
+    festa->totalConvites = 0;
+};
+
+void liberarMemoria(Festa *festa) {
+
+    // OBSERVAÇÃO IMPORTANTE SOBRE A FUNÇÃO!
+    // 
+    // Tive que usar o memset() pois Convidados[] e Trabalhadores[] estão com memória alocada estaticamente. Sei que isso não "apaga" a memória, então acabo "resetando" ela toda para 0.
+    // Já com convites, está alocado dinamicamente, logo consigo usar o free() sem problema algum.
+    // 
+    // Segui o enunciado do trabalho, para ser condizente com o mesmo. Entretanto, particularmente eu alteraria a estrutura de Trabalhadores e Convidados para uma alocação dinâmica. Assim facilitaria o processo de liberar memória, e defintivamente liberaria esse espaço para o sistema.
+
+    // Liberar trabalhadores
+    memset(festa->trabalhadores, 0, sizeof(festa->trabalhadores));
+    festa->totalTrabalhadores = 0;
+
+    // Liberar convidados
+    memset(festa->convidados, 0, sizeof(festa->convidados));
+    festa->totalConvidados = 0;
+
+    // Liberar dos convites convites
+    liberarMemoriaConvites(festa);    
+
+    // Libera memória da festa
+    free (festa);
+
+};
+
+
+
+

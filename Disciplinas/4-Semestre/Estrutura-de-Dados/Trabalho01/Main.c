@@ -43,6 +43,7 @@ int main()
         printf("|FESTA:\n");
         printf("|\t13. Mostrar Dados da Festa.\n");
         printf("|\t14. Mostrar Valor Total da Festa.\n");
+        printf("|\t15. Excluir todos os convites.\n");
         printf("|\n|\t0. Sair.\n|\n");
         printf("|Opção: ");
         scanf("%d", &opcao);
@@ -103,6 +104,10 @@ int main()
             case 14:
                 mostrarTotalPagamentos(festa);
                 break;
+
+            case 15:
+                liberarMemoriaConvites(festa);
+                break;
             
             default:
                 break;
@@ -110,6 +115,7 @@ int main()
 
     } while (opcao != 0);
 
-    free(festa);
+    liberarMemoria(festa);
+
     exit(0);
 }
