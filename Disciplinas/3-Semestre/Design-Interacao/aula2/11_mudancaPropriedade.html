@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="radio" id="verde" value="1"> Verde
+    <input type="radio" id="violeta" value="2">Violeta
+    <input type="radio" id="amarelo" value="3">Amarelo
+
+    <script>
+        document.querySelector("#verde").addEventListener("click", ()=>{document.body.style.backgroundColor = "green";});
+
+        document.querySelector("#violeta").addEventListener("click", ()=> {document.body.style.backgroundColor = "violet";});
+
+        document.querySelector("#amarelo").addEventListener("click", ()=>{document.body.style.backgroundColor = "yellow";});
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="p1">
+        Hello World!
+    </p>
+
+    <input type="button" value="Alterar" id="b2">
+
+    <script>
+        function altera() {
+            document.querySelector("#p1").style.color = "blue";
+            document.querySelector("#p1").style.fontFamily = "Arial";
+        }
+
+        // Chama o evento no HTML
+        document.querySelector("#b2").addEventListener("dblclick", altera);
+
+    </script>
+    
+</body>
+</html>

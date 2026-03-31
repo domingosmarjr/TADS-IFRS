@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>9
+    <p id="intro">
+        Hello World!
+    </p>
+    <div>
+
+    </div>
+
+    <script type="text/javascript">
+        // Pega o elemento por id
+        let x = document.getElementById("intro");
+        
+        // Atribui para "div" o "primeiroFilho", valor do node de x para a div.
+        document.querySelector("div").innerHTML = `${x.firstChild.nodeValue}`;
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="intro">
+        Document Object Model
+    </p>
+    <hr>
+    <div id="resposta">
+
+    </div>
+    
+    <script>
+        let x = document.querySelector("#intro");
+
+        // MOSTRA NO HTML AS PROPRIEDADES DO ELEMENTO, DO SEU FILHO E DO SEU PAI.
+
+        // HIERARQUIA: PARENT, CHILD
+
+        document.querySelector("#resposta").innerHTML = `
+            PROPRIEDADES DO ELEMENTO <P>
+            ${x.nodeName} <br>
+            ${x.nodeValue} <br>
+            ${x.nodeType} <br>
+            <hr>
+            PROPRIEDADES DO TEXTO <br>
+            ${x.firstChild.nodeName} <br>
+            ${x.firstChild.nodeValue} <br>
+            ${x.firstChild.nodeType} <br>
+            <hr>
+            PROPRIEDADES DO ELEMENTO BODY <br>
+            ${x.parentNode.nodeName} <br>
+            ${x.parentNode.nodeValue} <br>
+            ${x.parentNode.nodeType} <br>
+        `;
+    </script>
+</body>
+</html>

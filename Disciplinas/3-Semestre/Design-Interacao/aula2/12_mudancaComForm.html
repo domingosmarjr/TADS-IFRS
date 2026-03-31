@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#" method="post" id="form1">
+        Digite o texto: 
+        <input type="text" id="teste" value="">
+        <input type="submit" value="Manda para o servidor.">
+    </form>
+
+    <script>
+        document.querySelector("#form1").addEventListener("submit", (e)=>{testa(e)});
+
+        function testa(e) {
+            if(document.querySelector("#teste").value == "") {
+                alert("Campo não preencheido");
+                e.preventDefault();
+            } else {
+                alert("Tudo ok.");
+            }
+        }
+    </script>
+    
+</body>
+</html>

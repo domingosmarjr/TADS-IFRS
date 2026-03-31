@@ -13,7 +13,7 @@
 ---------------------------------
 JavaScript BOM (Browser Object Model)
 - Window
-    >Document
+    >Document (Document Object Model)
     >History
     >Screen
     >Navigator
