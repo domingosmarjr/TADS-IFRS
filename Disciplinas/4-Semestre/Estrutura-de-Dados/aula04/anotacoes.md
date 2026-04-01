@@ -82,5 +82,3 @@ INICIALIZAÇÃO DOS PARÂMETROS DE UMA LISTA:
         lista->primeiro = NULL;
         lista->n_elementos = 0;
     }
-
-    

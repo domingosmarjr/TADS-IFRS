@@ -98,6 +98,8 @@ void cadastraAluno(Aluno *aluno, char nome[], int idade, int matricula)
     aluno->proximo = NULL;
 }
 
+// void insereFim()
+
 Aluno *informaNovoAluno()
 {
     // aloca dinamicamente um novo aluno, preenche os dados e retorna o endereço
