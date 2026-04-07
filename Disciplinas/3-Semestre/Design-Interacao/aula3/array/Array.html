@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p>*Array*</p>
+    <div id="array">
+
+    </div>
+   
+<script>
+
+let vetor=[1,2,3];
+
+// vetor.push(4,5);   //adiciona elementos no fim do vetor
+// vetor.shift(); //retira o primeiro elemento do vetor
+// vetor.unshift(6,7);  //adiciona elementos no inicio do vetor
+// vetor.splice(0,2); //retira 2 elementos após a posicao 0 
+// vetor.splice(3,0,8,9); //a partir da posição 3 deleta 0 elementos e adiciona os elementos 8 e 9
+// vetor.pop(); //retira o último elemento do vetor
+
+vetor.forEach((value, index)=>
+{document.querySelector("#array").innerHTML+=
+`${index} ---- ${value}<br>`}
+)
+</script>
+</body>
+</html>

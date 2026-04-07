@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Carrinho de Compras</title>
+  </head>
+  <body>
+    <header>
+      <h1>Carrinho de Compras</h1>
+    </header>
+    <main>
+      <fieldset>
+        <legend>Dados da Compra</legend>
+        <label for="nome">Nome Loja:</label>
+        <input type="text" id="nome" value=""><br><br>
+        <label for="data">Data da compra:</label>
+        <input type="date" id="data" value=""><br><br>
+        <input type="button" value="Alterar Dados da Compra"
+            onclick="alteraNomeData()">
+      </fieldset>
+      <fieldset>
+        <legend>Dados do Produto</legend>
+        <label for="nome_produto">Produto:</label>
+        <input type="text" id="nome_produto"><br><br>
+        <label for="preco">Preço: </label> 
+        <input type="number" id="preco"><br><br>
+        <input type="button" value="Adicionar Produto"
+          onclick="insereProd()">
+      </fieldset>
+  
+      <section id="lista">...</section>
+    </main>
+    <script>
+      let estoque = {
+        nome: "Fulano SA",
+        data: "11/10/2025",
+        produtos: [
+          { nome_produto: "Banana", preco: 2.0 },
+          { nome_produto: "Maça", preco: 2.5 },
+          { nome_produto: "Laranja", preco: 3.0 },
+        ],
+      };
+
+      function mostra() {
+        let valor = `
+          Nome Loja:${estoque.nome}<br>
+          Data:${estoque.data}<br><br> 
+          <table>
+            <caption>Lista de Produtos</caption>
+            <thead>
+              <tr>
+                <th>Produto</th>
+                <th>Preço</th>
+                <th>Excluir</th>
+              </tr>
+            </thead>
+            <tbody>`;
+
+        for (let i = 0; i < estoque.produtos.length; i++) {
+          valor += `
+          <tr>
+              <td>${estoque.produtos[i].nome_produto}</td>
+              <td>${estoque.produtos[i].preco}</td>
+              <td><input type='button' value='Excluir' onclick = 'excluirProd(${i})'></td>
+          </tr>`;
+        }
+        valor+=`<tbody></table>`;
+
+        document.querySelector("#lista").innerHTML = valor;
+      }
+
+      function alteraNomeData() {
+        estoque.nome = document.querySelector("#nome").value;
+        estoque.data = document.querySelector("#data").value;
+        mostra();
+      }
+
+      function insereProd() {
+        estoque.produtos.push({
+          nome_produto: document.querySelector("#nome_produto").value,
+          preco: document.querySelector("#preco").value,
+        });
+        mostra();
+      }
+      function excluirProd(num) {
+        estoque.produtos.splice(num, 1);
+        mostra();
+      }
+    </script>
+  </body>
+</html>

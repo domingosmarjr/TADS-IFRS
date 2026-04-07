@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapReduceFilter</title>
+</head>
+<body>
+    <Script>
+        /* Map - Monta e retorna um array destino percorrendo o array original
+         cada elemento do array original é substituido pelo retorno da função
+         no array destino.
+         No exemplo abaixo:
+         numeros -- array original
+         dobro -- array destino
+         item -- item do array original que está sendo percorrido
+         a função do map é a arrow function em seu parâmetro
+
+         ** Filter - Monta e retorna um array destino percorrendo o array original
+         cada item do array original é testado pela função e se o retorno for TRUE
+         este item faz parte do array destino.
+         No exemplo abaixo:
+         numeros -- array original
+         maiores -- array destino
+         item -- item do array original que está sendo testado
+         a função do filter é a arrow function em seu parâmetro
+
+        ** Reduce - Monta e retorna um resultado (string, number...)) percorrendo o array original
+         cada item do array original é usado pela função e o retorno da funçaõ é colocado no
+         resultado. O valor do resultado é mantido em todas interações
+         No exemplo abaixo:
+         numeros -- array original
+         resultado -- resultado
+         item -- item do array original que está sendo usado
+         a função do reduce é a arrow function em seu parâmetro
+         O segundo parâmetro o 0, é em que índice do vetor a interação do reduce começa
+        */
+
+        let numeros = [1, 2, 3, 4];
+        // Map 
+        let dobro = numeros.map( (item) => { return item * 2} );
+        console.log(dobro); // [2, 4, 6, 8]
+
+        // Filter
+        let maiores = numeros.filter( (item) => {return item >= 3} );
+        console.log(maiores); // [3, 4]
+
+        // Reduce
+        let soma = numeros.reduce( (resultado, item) => {return resultado + item},0  );
+        console.log(soma); // 10
+
+        console.log(numeros);
+        console.log("**** Map");
+
+        let produtos = [{
+                fornecedor:'LG',
+                nome: 'TV',
+                preco: 800
+            }, {
+                fornecedor:'LG',
+                nome: 'Monitor',
+                preco: 450
+            }, {
+                fornecedor:'Sansung',
+                nome: 'TV',
+                preco: 900
+            }, {
+                fornecedor:'Gradiente',
+                nome: 'TV',
+                preco: 700
+            }, {
+                fornecedor:'LG',
+                nome: 'SSD',
+                preco: 300
+            }];
+
+            //***Map**
+            //Lista de precos
+            let precos = produtos.map( (item) => { return item.preco} );
+            console.log(precos) //[800,450,900,700,300]
+
+            // precos com 10% de desconto
+            let precosDesconto = produtos.map( (item) => { return item.preco * 0.9} );
+            console.log(precosDesconto); //[720,405,810,630,270]
+
+            //retornar objetos completos com o preco alterado
+            precosDescontoCompleto = produtos.map( (item) => { 
+                                            item.preco=item.preco * 0.9;
+                                            return item} );
+            console.log(precosDescontoCompleto);
+            
+            console.log("**** Filter");
+            //**** Filter ***
+            //Produtos da LG
+            LG = produtos.filter( (item) => {return item.fornecedor === 'LG'} );
+            console.log(LG); 
+            // TVs
+            tv = produtos.filter( (item) => {return item.nome === 'TV'} );
+            console.log(tv); 
+
+            console.log("**** Reduce");
+            //*** Reduce ***
+            //Se vender tudo quando receberá?
+            let total = produtos.reduce( (resultado, item) => {return resultado + item.preco;},0  );
+            console.log(total); 
+
+            //Quantos produtos estão a venda?
+            total = produtos.reduce( (resultado, item) => {return resultado + 1;},0  );
+            console.log(total); 
+
+            //Qual o item mais barato a venda?
+            barato=produtos.reduce((resultado, item) => {
+                if(!resultado){resultado=item}
+                else{
+                    if (resultado.preco > item.preco){
+                        resultado=item;
+                    }
+                }
+                return resultado},0  )
+            console.log(barato)
+            
+            console.log("**** Combinações");
+            
+            //Total de vendas da LG?
+            LGVendas = produtos.filter( (item) => {return item.fornecedor === 'LG'} )
+                               .reduce( (resultado, item) => {return resultado + item.preco;},0  );
+            console.log(LGVendas);
+
+            //Quantas tvs estão a venda?
+            TVvendas= produtos.filter( (item) => {return item.nome === 'TV'} )
+                              .reduce( (resultado, item) => {return resultado + 1;},0  );
+            console.log(TVvendas);
+
+            console.log("**** Alternativas");
+
+            //Formas alternativas  *********************
+            
+        
+
+        numeros = [1, 2, 3, 4];
+        dobro = numeros.map( (item) => { return item * 2} );
+        console.log(dobro); // [2, 4, 6, 8]
+
+        dobro = numeros.map( function (item) { return item * 2} );
+        console.log(dobro); // [2, 4, 6, 8]
+
+        function dobrar(valor)
+        {return valor * 2}
+        dobro = numeros.map( dobrar );
+        console.log(dobro); // [2, 4, 6, 8]
+        
+        
+        // equivalentes com for each
+        //map
+        dobro=[];
+        numeros.forEach(item => { dobro.push(2*item) });
+        console.log(dobro); // [2, 4, 6, 8]
+
+        //filter
+        maior=[];
+        numeros.forEach(item => { 
+            if(item >= 3){
+                maior.push(item)
+            }
+        });
+        console.log(maior); // [3, 4]
+    
+        //reduce
+        soma=0;
+        numeros.forEach(item => {
+            soma=soma+item
+        })
+        console.log(soma); //10
+    
+    </script>
+    
+</body>
+</html>

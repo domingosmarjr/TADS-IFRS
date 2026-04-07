@@ -66,6 +66,22 @@ Aluno* removeInicio (LSE *lista) {
     return aux;
 }
 
+Aluno* removeFim (LSE *lista) {
+    Aluno *aux = lista->primeiro;
+    Aluno *anterior = NULL;
+    if (lista->primeiro->proximo == NULL) {
+        lista->primeiro == NULL;
+    } else {
+        while (aux->proximo != NULL) {
+            anterior = aux;
+            aux = aux->proximo;
+        }
+        //próximo do aux é null
+        //to no fim da lista
+        anterior = aux;
+    }
+}
+
 
 int main() {
     LSE matematica;
