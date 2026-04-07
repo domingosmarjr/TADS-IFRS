@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            border: 1px solid black;
+            margin: 1px;
+            padding: 1px;
+        }
+
+        body {
+            margin: 0px 50px 0px 50px;
+        }
+        header {
+            margin: 10px;
+        }
+        header>h1 {
+            margin: 10px;
+        }
+        nav {
+            display: flex;
+            margin: 10px;
+        }
+        nav > ul {
+            display: flex;
+            list-style: none;
+        }
+
+        main {
+            margin: 10px;
+            background-color: bisque;
+        }
+
+        footer {
+            margin: 10px;
+        }
+
+        
+        #editorCartoes {
+            display: flex;
+            padding: 10px;
+            background-color: beige;
+
+        }
+        #editor {
+            background-color: aqua;
+            flex: 1;            
+        }
+
+        #card {
+            background-color: rgb(97, 219, 127);
+            flex: 1;
+        }
+
+
+</style>
+</head>
+<body>
+    <header>
+        <h1>Título do Site</h1>
+        <nav>
+            <ul>
+                <li>Home</li>
+                <li>Trabalho 1</li>
+                <li>Trabalho 2</li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id = "editorCartoes">
+            <div id="editor">
+                <p>Personalize seu cartão!</p>
+                <form action="">
+                    <fieldset>
+                        <label>Título:</label>
+                        <input type="text" id="insereTitulo">
+                        <br>
+                        <button type="button" id="buttonTitulo">Adicionar Título</button>
+                        <br><br>
+
+                        <label>Texto:</label>
+                        <input type="text" id="insereTexto">
+                        <br>
+                        <button type="button" id="buttonTexto">Adicionar Texto</button>
+                        <br><br>
+
+                        <label>Image:</label>
+                        <input type="file" id="insereImagem" accept="image/*">
+                        <br>
+                        <button type="button" id="buttonImagem">Adicionar Imagem</button>
+                        <br><br>
+
+                        <label>Mudar Cor do Cartão:</label>
+                        <input type="color" id="insereCor">
+
+
+                    </fieldset>
+                </form>
+            </div>
+            <div id="card">
+            </div>
+        </div>
+            
+        <script>
+            // Pega e guarda o card.
+            let card = document.getElementById("card");
+            // Pega e guarda os inputs que serão colocados.
+            let inputTitulo = document.getElementById("insereTitulo");
+            let inputTexto = document.getElementById("insereTexto");
+            let inputImagem = document.getElementById("insereImagem");
+            let inputCor = document.getElementById("insereCor");
+            
+            function adicionarTitulo() {
+                let titulo = document.createElement("h2");
+                titulo.textContent = inputTitulo.value || "Título Padrão";
+                card.appendChild(titulo);
+            }
+
+            function adicionarTexto() {
+                let texto = document.createElement("p");
+                texto.textContent = inputTexto.value || "Texto Padrão";
+                card.appendChild(texto);
+            }
+
+            function adicionarImagem() {
+                let imagem = inputImagem.files[0];
+
+                if(!imagem) {
+                    alert("Selecione uma imagem primeiro!");
+                    return;
+                }
+
+                let img = document.createElement("img");
+                img.style.maxWidth = "100%";
+
+                let reader = new FileReader();
+
+                reader.onload = function (e) {
+                    img.src = e.target.result;
+                }
+
+                reader.readAsDataURL(imagem);
+
+                card.appendChild(img);
+            }
+
+            // REMOVER ELEMENTO COM CLIQUE NO CARTÃO
+            card.addEventListener("click", (e) =>{
+                const elemento = e.target;
+                if(elemento !== card) {
+                    elemento.remove();
+                }
+            });
+
+            const btnTitulo = document.getElementById("buttonTitulo");
+            const btnTexto = document.getElementById("buttonTexto");
+            const btnImagem = document.getElementById("buttonImagem");
+
+            btnTitulo.addEventListener("click", adicionarTitulo);
+            btnTexto.addEventListener("click", adicionarTexto);
+            btnImagem.addEventListener("click", adicionarImagem);
+
+
+            inputCor.addEventListener("input", () => {
+                card.style.backgroundColor = inputCor.value;
+            });
+
+        </script>
+
+    </main>
+    <footer>
+        <p>Rodapé</p>
+    </footer>
+</body>
+</html>
