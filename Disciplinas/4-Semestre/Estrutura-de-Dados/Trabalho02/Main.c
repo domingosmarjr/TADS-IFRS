@@ -113,20 +113,35 @@ int main() {
     exibirMusica(m9);
     exibirMusica(m10);
 
-    Playlist *p1 = (Playlist*)malloc(sizeof(Playlist));
+    Playlist *p1 = criaPlaylist();
 
-    mostraPlayslistED(*p1);
 
-    // insereInicio(p1, n3);
-    // insereInicio(p1, n2);
-    // insereInicio(p1, n1);
+    insereInicio(p1, n3);
+    insereInicio(p1, n2);
+    insereInicio(p1, n1);
+    inserePosicao(p1, n4, 4);
 
-    insereNoFim(p1, n1);
-    insereNoFim(p1, n2);
-    insereNoFim(p1, n3);
-    insereInicio(p1, n4);
+    // removeInicio(p1);
+    // removeInicio(p1);
+    // removeInicio(p1);
+    // removeInicio(p1);
+    
+    // removeFim(p1);
+    // removeFim(p1);
+    // removeFim(p1);
+    // removeFim(p1);
+
+    // removePosicao(p1, -1);
+        
+    // insereFim(p1, n1);
+    // insereFim(p1, n2);
+    // insereFim(p1, n3);
+    // insereInicio(p1, n4);
     
 
+    
+    play(p1);
+    mostraMusicaAtual(p1);
 
     mostraPlayslistED(*p1);
 

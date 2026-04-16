@@ -14,8 +14,18 @@ typedef struct playlist {
 // ====== MÉTODOS ======
 Playlist *criaPlaylist();
 void insereInicio (Playlist *plys, No *no);
-void insereNoFim (Playlist *plys, No *no);
-void mostraMusica (No no);
-void mostraPlayslistED (Playlist plys);
+int inserePosicao (Playlist *plys, No *no, int p);
+void insereFim (Playlist *plys, No *no);
 
+No* removeInicio (Playlist *plys);
+No* removePosicao (Playlist *plys, int p);
+No* removeFim (Playlist *plys);
+
+Musica* play(Playlist *plys);
+
+void mostraMusica (No no);
+void mostraMusicaAtual (Playlist *plys);
+
+void mostraPlayslistED (Playlist plys);
+int qntMusicas (Playlist *plys);
 #endif
