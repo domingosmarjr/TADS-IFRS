@@ -42,7 +42,7 @@ int main() {
                 deletarMusica(p1);
                 break;
             case 'M':
-                mostraPlayslistED(*p1);
+                mostraPlaylistED(*p1);
                 pausa();
                 break;
             case 'L':

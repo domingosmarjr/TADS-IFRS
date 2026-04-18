@@ -14,7 +14,7 @@ typedef struct playlist {
 // ====== MÉTODOS ======
 
 // - Inicializar playlist
-Playlist *criarPlaylist();
+Playlist *criaPlaylist();
 
 // - Preset para testes
 void carregarPreset(Playlist *plys);
@@ -26,7 +26,7 @@ void interfacePlayer(Playlist *plys);
 
 // - Operações de inserção na LDE
 void insereInicio(Playlist *plys, No *no);
-void inserePosicao(Playlist *plys, No *no, int p);
+int inserePosicao(Playlist *plys, No *no, int p);
 void insereFim(Playlist *plys, No *no);
 void adicionarMusicaUsuario(Playlist *plys, char tipo);
 
@@ -38,7 +38,7 @@ void removerMusicaUsuario(Playlist *plys, char tipo);
 
 // - Operações do Player por Usuário
 Musica* play(Playlist *plys);
-void avancarMusicar(Playlist *plys);
+void avancarMusica(Playlist *plys);
 void retrocederMusica(Playlist *plys);
 
 // - Quantificador de Playlist

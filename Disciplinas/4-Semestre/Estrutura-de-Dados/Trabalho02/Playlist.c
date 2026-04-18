@@ -121,7 +121,6 @@ void insereInicio (Playlist *plys, No *no) {
         plys->inicio->anterior = no;
     }
     plys->inicio = no;
-    // Inserir count aqui
 }
 
 // ========== INSERE N ==========
@@ -143,13 +142,10 @@ int inserePosicao (Playlist *plys, No *no, int p) {
         no->proximo = aux->proximo;
         no->anterior = aux;
 
-        if (aux->proximo != NULL) {
-            aux->proximo->anterior = no;
-        }
-
-        // plys->fim = no;
+        if (aux->proximo != NULL) aux->proximo->anterior = no;
+        
         aux->proximo = no;
-        // Count aqui
+
         return 1;
     }
 }
@@ -157,13 +153,11 @@ int inserePosicao (Playlist *plys, No *no, int p) {
 // ========== INSERE FIM ==========
 void insereFim (Playlist *plys, No *no) {
     no->proximo = NULL;
-    if (plys->inicio == NULL) {
-        insereInicio(plys, no);
-    } else {
+    if (plys->inicio == NULL) insereInicio(plys, no);
+    else {
         no->anterior = plys->fim;
         plys->fim->proximo = no;
         plys->fim = no;
-        // Inserir count aqui
     }
 }
 
@@ -217,17 +211,13 @@ void adicionarMusicaUsuario (Playlist *plys, char tipo) {
 
 // ========== REMOVE INICIO ==========
 No* removeInicio (Playlist *plys) {
-    if(plys->inicio == NULL) {
-        return NULL;
-    } else {
+    if(plys->inicio == NULL) return NULL;
+    else {
         No *aux = plys->inicio;
         plys->inicio = aux->proximo;
 
-        if (plys->inicio != NULL) {
-            plys->inicio->anterior = NULL;
-        } else {
-            plys->fim = NULL;
-        }
+        if (plys->inicio != NULL) plys->inicio->anterior = NULL;
+        else plys->fim = NULL;
 
         aux->proximo = NULL;
         aux->anterior = NULL;
@@ -247,9 +237,7 @@ No* removePosicao (Playlist *plys, int p) {
     if (p == (tam - 1)) return removeFim(plys);
 
     No *aux = plys->inicio;
-    for (int i = 0; i < p; i++) {
-        aux = aux->proximo;
-    }
+    for (int i = 0; i < p; i++)  aux = aux->proximo;
 
     aux->anterior->proximo = aux->proximo;
     aux->proximo->anterior = aux->anterior;
@@ -262,17 +250,13 @@ No* removePosicao (Playlist *plys, int p) {
 
 // ========== REMOVE FIM ==========
 No* removeFim (Playlist *plys) {
-    if(plys->fim == NULL) {
-        return NULL;
-    } else {
+    if(plys->fim == NULL) return NULL;
+    else {
         No *aux = plys->fim;
         plys->fim = aux->anterior;
 
-        if (plys->fim != NULL) {
-            plys->fim->proximo = NULL;
-        } else {
-            plys->inicio = NULL;
-        }
+        if (plys->fim != NULL) plys->fim->proximo = NULL;
+        else plys->inicio = NULL;
 
         aux->proximo = NULL;
         aux->anterior = NULL;
@@ -288,36 +272,27 @@ void removerMusicaUsuario (Playlist *plys, char tipo) {
     No *novoAtual = NULL;
 
     if (plys->musicaAtual != NULL) {
-        if (plys->musicaAtual->proximo != NULL)
-            novoAtual = plys->musicaAtual->proximo;
-        else
-            novoAtual = plys->inicio; // volta pro início
+        if (plys->musicaAtual->proximo != NULL) novoAtual = plys->musicaAtual->proximo;
+        else novoAtual = plys->inicio;
     }
 
-    if (tipo == 'I') {
-        removido = removeInicio(plys);
-    } 
-    else if (tipo == 'F') {
-        removido = removeFim(plys);
-    } 
+    if (tipo == 'I') removido = removeInicio(plys);
+    else if (tipo == 'F') removido = removeFim(plys);
     else if (tipo == 'N') {
         printf("Posição: ");
         scanf("%d", &pos);
         removido = removePosicao(plys, pos);
     }
 
-    if (removido == NULL) {
-        printf("Erro ao remover música.\n");
-    } else {
+    if (removido == NULL) printf("Erro ao remover música.\n");
+    else {
         printf("Música removida: ");
         mostraMusica(*removido);
 
         // Só atualiza se removeu a atual
         if (removido == plys->musicaAtual) {
-            if (plys->inicio == NULL)
-                plys->musicaAtual = NULL;
-            else
-                plys->musicaAtual = novoAtual;
+            if (plys->inicio == NULL) plys->musicaAtual = NULL;
+            else plys->musicaAtual = novoAtual;
         }
 
         free(removido);
@@ -332,10 +307,7 @@ Musica* play(Playlist *plys) {
         return NULL;
     }
 
-    if(plys->musicaAtual == NULL) {
-        plys->musicaAtual = plys->inicio;
-
-    }
+    if(plys->musicaAtual == NULL) plys->musicaAtual = plys->inicio;
 
     printf("\nReproduzindo: ");
     mostraMusica(*plys->musicaAtual);
@@ -376,7 +348,7 @@ int qntMusicas (Playlist *plys) {
     }
     return n;
 }
-void qntMusicasPrint(Playlist *plys) {
+int qntMusicasPrint(Playlist *plys) {
     printf("\nQuantidade: %d\n", qntMusicas(plys));
 }
 
@@ -391,7 +363,7 @@ void mostraMusicaAtual (Playlist *plys) {
 }
 
 // ============== MOSTRA PLAYLIST ==============
-void mostraPlayslistED (Playlist plys) {
+void mostraPlaylistED (Playlist plys) {
     No *aux = plys.inicio;
     if (aux == NULL)  printf("\nLista Vazia.\n");
     else {
