@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./componente.js"></script>
+</head>
+<body>
+    <layout-pagina>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi temporibus, officia ad debitis similique alias illum illo fugiat quisquam. Sapiente provident nostrum doloribus odio? Ea dolorem tempore culpa sapiente amet?Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem aliquid praesentium libero similique laudantium architecto, sunt a dolores dolorum accusamus vel exercitationem quidem dicta? Corporis ab explicabo magnam recusandae molestiae?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi temporibus, officia ad debitis similique alias illum illo fugiat quisquam. Sapiente provident nostrum doloribus odio? Ea dolorem tempore culpa sapiente amet?Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem aliquid praesentium libero similique laudantium architecto, sunt a dolores dolorum accusamus vel exercitationem quidem dicta? Corporis ab explicabo magnam recusandae molestiae?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi temporibus, officia ad debitis similique alias illum illo fugiat quisquam. Sapiente provident nostrum doloribus odio? Ea dolorem tempore culpa sapiente amet?Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem aliquid praesentium libero similique laudantium architecto, sunt a dolores dolorum accusamus vel exercitationem quidem dicta? Corporis ab explicabo magnam recusandae molestiae?</p>
+    </layout-pagina>
+
+    <!-- TEMPLATE = LAYOUT -->
+    <template id="layout-template">
+        <style>
+            .container {
+                max-width: 900px;
+                margin: 30px auto;
+                padding: 10px;
+                border: 1px solid black;
+            }
+        </style>
+
+        <novo-header></novo-header>
+        <novo-nav></novo-nav>
+
+        <main class="container">
+            <slot></slot>
+        </main>
+
+        <novo-footer></novo-footer>
+    </template>
+
+    <!-- CHAMA TEMPLATE.JS -->
+    <script src="./template.js"></script>
+
+</body>
+</html>
