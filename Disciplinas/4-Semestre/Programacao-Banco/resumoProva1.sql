@@ -1,3 +1,5 @@
+psql -U postgres -h localhost
+
 -- PROCEDURE
 -- Não precisa retornar um valor
 -- Executa ações (inserir, atualizar, deletar, lógica)
@@ -169,3 +171,32 @@ BEGIN
     END LOOP;
 END;
 $$ LANGUAGE plpgsql;
+
+-- ============================================================================
+-- RECORD = igual ROWTYPE mas sem estrutura definida-->
+- variável RECORD assume a estrutura de linha
+- atribuição nova de RECORD assuma nova linha atribuída
+- precisa atribuir para operar
+
+CREATE FUNCTION encontrar_departamento (func funcionario.id_func%TYPE) RETURNS text AS
+$$
+    DECLARE
+        reg RECORD;
+        depto funcionario.id_depto%TYPE;
+    BEGIN
+        //Armazena em reg o registro do funcionario de código inserido
+        SELECT INTO reg * FROM funcionario WHERE id_func = func;
+
+        IF NOT FOUND THEN
+            ---
+            RAISE EXCEPTION 'Empregado % não encontrado', func;
+        ELSE
+            depto := reg.id_depto;
+            //Armazena em reg o registro do departamento de código departamento
+            SELECT INTRO reg * FROM departamento WHERE id_depto = depto;
+            RETURN reg.id_depto || '---' || reg.nomedepto;
+        END IF;
+    END;
+$$ LANGUAGE plpgsql;
+
+SELECT encontra_departamento(1);
