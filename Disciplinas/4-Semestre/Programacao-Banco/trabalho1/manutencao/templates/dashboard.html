@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Dashboard do Sistema</h1>
+
+    <div style="border:1px solid black; padding:10px; width:300px;">
+        <p><b>Total de Serviços:</b> {{ dashboard[0] }}</p>
+        <p><b>Serviços Abertos:</b> {{ dashboard[1] }}</p>
+        <p><b>Serviços Finalizados:</b> {{ dashboard[2] }}</p>
+        <p><b>Tempo Médio (horas):</b> {{ dashboard[3] }}</p>
+    </div>
+
+    <br>
+    <a href="/ranking">Ranking Técnicos</a><br>
+    <a href="/servicos"> Consulta Serviços</a><br>
+    <a href="/novo_status">Novo Status</a><br>
+
+    <a href="/usuarios">Listar Usuários</a><br>
+    <a href="/equipamentos">Listar Equipamentos</a><br>
+    <a href="/status">Listar Status</a>
+
+
+</body>
+</html>

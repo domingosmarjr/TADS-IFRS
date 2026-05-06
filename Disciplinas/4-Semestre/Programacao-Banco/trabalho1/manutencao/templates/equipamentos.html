@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Equipamentos</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Descricao</th>
+            <th>Ativo</th>
+        </tr>
+
+        {% for u in equipamentos %}
+
+        <tr>
+            <td>{{ u[0] }}</td>
+            <td>{{ u[1] }}</td>
+            <td>{{ u[2] }}</td>
+        </tr>
+
+        {% endfor %}
+    </table>
+    <a href="/">Voltar</a>
+</body>
+</html>

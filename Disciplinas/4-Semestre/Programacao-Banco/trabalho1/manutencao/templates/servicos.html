@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Selecionar Serviço</h2>
+
+    <form method="GET" id="formServico">
+        <select name="id" id="servico_id">
+            {% for s in servicos %}
+                <option value="{{ s[0] }}">
+                    {{ s[0] }} - {{ s[2] }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Ver Detalhes</button>
+
+        <a href="/">Voltar</a>
+    </form>
+
+    <script>
+        document.getElementById("formServico").onsubmit = function(e) {
+            e.preventDefault();
+            var id = document.getElementById("servico_id").value;
+            window.location.href = "/servico/" + id;
+        }
+    </script>
+</body>
+</html>

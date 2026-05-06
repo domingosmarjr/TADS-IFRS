@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Status por Serviço</h2>
+
+    <form method="POST">
+        <select name="servico_id" required>
+            <option value="">Selecione um serviço</option>
+
+            {% for s in servicos %}
+                <option value="{{ s[0] }}">
+                    {{ s[0] }} - {{ s[1] }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Buscar</button>
+    </form>
+
+    <hr>
+
+    <table border="1">
+        <tr>
+            <th>Status</th>
+        </tr>
+
+        {% for s in status %}
+        <tr>
+            <td>{{ s[0] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/">Voltar</a>
+</body>
+</html>

@@ -5,5 +5,6 @@ def conectar():
         host="localhost",
         database="manutencao",
         user="postgres",
-        password="postgres"
+        password="postgres",
+        options="-c client_encoding=UTF8"
     )

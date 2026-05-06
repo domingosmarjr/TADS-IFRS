@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Detalhes do Serviço</h2>
+
+    {% if servico %}
+        <p><b>Título:</b> {{ servico[0] }}</p>
+        <p><b>Descrição:</b> {{ servico[1] }}</p>
+        <p><b>Prioridade:</b> {{ prioridade }}</p>
+    {% else %}
+        <p>Serviço não encontrado.</p>
+    {% endif %}
+
+    <br>
+    <a href="/servicos">Voltar para Serviços</a>
+    <br>
+    <a href="/">Voltar ao Dashboard</a>
+</body>
+</html>

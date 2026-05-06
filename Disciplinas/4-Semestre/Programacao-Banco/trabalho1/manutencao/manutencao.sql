@@ -1,13 +1,11 @@
--- ==========================================================================================================
--- CRIAÇÃO DO BANCO
+-- =========================== CRIAÇÃO BANCO ===========================
 DROP DATABASE IF EXISTS manutencao;
 
 CREATE DATABASE manutencao;
 
 \c manutencao;
 
--- ==========================================================================================================
--- FUNÇÕES BÁSICAS
+-- =========================== FUNÇÕES BASE ===========================
 CREATE OR REPLACE FUNCTION validaEmail(email character varying(200)) RETURNS BOOLEAN AS
 $$
 DECLARE
@@ -36,8 +34,7 @@ BEGIN
 END;
 $$ LANGUAGE 'plpgsql';
 
--- ==========================================================================================================
--- TABELAS
+-- =========================== TABELAS ===========================
 CREATE TABLE usuario (
     id serial PRIMARY KEY,
     email character varying(200) UNIQUE CHECK( validaEmail(email) IS TRUE),
@@ -59,7 +56,8 @@ CREATE TABLE servico (
     data_hora_criacao timestamp DEFAULT current_timestamp,
     finalizado timestamp,
     criador_id integer REFERENCES usuario(id),
-    responsavel_id integer REFERENCES usuario(id)
+    responsavel_id integer REFERENCES usuario(id),
+    equipamento_id integer REFERENCES equipamento(id)
 );
 
 CREATE TABLE status (
@@ -71,23 +69,15 @@ CREATE TABLE status (
     criador_id integer REFERENCES usuario(id)
 );
 
--- ==========================================================================================================
--- INSERTS
-INSERT INTO usuario (nome, email, senha) VALUES
-('Igor', 'igor.pereira@riogrande.ifrs.edu.br',md5('123'));
-
-INSERT INTO equipamento (descricao) VALUES
-('Projetor Multimídia');
-
-INSERT INTO servico (titulo, descricao, criador_id, responsavel_id) VALUES
-('Projetor não liga', 'Projetor não liga devido ao cabo', 1, 1);
-
-INSERT INTO status (situacao, servico_id) VALUES 
-('Tentei resolver e não deu!', 1);
 
 
--- ==========================================================================================================
--- FUNÇÕES DA LISTA
+
+
+
+
+
+
+-- =========================== FUNÇÕES DA LISTA ===========================
 -- ============ USUÁRIO ============
 -- 1) CADASTRAR NOVO USUÁRIO
 CREATE OR REPLACE PROCEDURE cadastra_usuario (p_nome text, p_email text) AS
@@ -267,17 +257,17 @@ $$ LANGUAGE 'plpgsql';
 
 -- 12) LISTAR TODOS SERVIÇOS CADASTRADOS
 CREATE OR REPLACE FUNCTION listar_servicos() RETURNS TABLE (
-    id integer,
-    descricao text,
-    titulo text,
-    data_hora_criacao timestamp,
-    finalizado timestamp,
-    criador_id integer,
-    responsavel_id integer
+    s_id integer,
+    s_descricao text,
+    s_titulo text,
+    s_data_hora_criacao timestamp,
+    s_finalizado timestamp,
+    s_criador_id integer,
+    s_responsavel_id integer
 ) AS
 $$
 BEGIN
-    RETURN QUERY SELECT id, descricao, titulo, data_hora_criacao, finalizado, criador_id, responsavel_id FROM servico;
+    RETURN QUERY SELECT id, descricao, titulo, data_hora_criacao, finalizado, criador_id, responsavel_id FROM servico ORDER BY id;
 END;
 $$ LANGUAGE 'plpgsql';
 
@@ -478,5 +468,121 @@ BEGIN
     RETURN QUERY with tb_criador AS (
         select servico.id, titulo, data_hora_criacao, descricao, finalizado, nome as criador, responsavel_id from servico inner join usuario on (servico.criador_id = usuario.id)
     ) SELECT tb_criador.id, tb_criador.titulo, tb_criador.descricao,  tb_criador.data_hora_criacao, tb_criador.finalizado, criador, usuario.nome as responsavel from tb_criador inner join usuario on (tb_criador.responsavel_id = usuario.id);
+END;
+$$ LANGUAGE 'plpgsql';
+
+
+
+
+
+
+
+
+
+
+
+-- ======================= TRABALHO PBDA 1 =======================
+-- 1.1 - Função Prioridade do Serviço [0,5]
+CREATE OR REPLACE FUNCTION prioridade_servico(p_id_servico integer) RETURNS TEXT AS
+$$
+DECLARE
+    qnt_status integer;
+    prioridade text;
+BEGIN
+    SELECT COUNT(*) INTO qnt_status FROM status WHERE servico_id = p_id_servico;
+
+    IF (qnt_status = 1) THEN
+        prioridade := 'Baixa';
+    ELSIF (qnt_status > 1 AND qnt_status < 4) THEN
+        prioridade := 'Média';
+    ELSIF (qnt_status >= 4) THEN
+        prioridade := 'Alta';
+    ELSE
+        prioridade := 'Sem status';
+    END IF;
+
+    RETURN prioridade;
+END;
+$$ LANGUAGE 'plpgsql';
+
+-- 1.2 - Função para cálculo do tempo de atendimento [0,5]
+CREATE OR REPLACE FUNCTION tempo_atendimento(p_id_servico integer) RETURNS NUMERIC AS
+$$
+DECLARE
+    data_inicio timestamp;
+    data_fim timestamp;
+    tempo_horas numeric;
+BEGIN
+    SELECT data_hora_criacao, finalizado INTO data_inicio, data_fim FROM servico WHERE id = p_id_servico;
+
+    IF (data_fim IS NULL) THEN
+        RETURN NULL;
+    END IF;
+
+    tempo_horas := ROUND(EXTRACT(EPOCH FROM (data_fim - data_inicio)) / 3600, 2);
+
+    RETURN tempo_horas;
+END;
+$$ LANGUAGE 'plpgsql';
+
+-- 1.3 - Ranking de Técnicos [0,5]
+CREATE OR REPLACE FUNCTION ranking_tecnicos() RETURNS TABLE (
+    nome_usuario character varying(200),
+    qnt_servicos_finalizados integer
+) AS
+$$
+BEGIN
+    RETURN QUERY SELECT usuario.nome, COUNT(servico.id)::INTEGER AS qnt_servicos_finalizados FROM servico 
+    INNER JOIN usuario ON usuario.id = servico.responsavel_id 
+    WHERE servico.finalizado IS NOT NULL 
+    GROUP BY usuario.nome ORDER BY qnt_servicos_finalizados DESC;
+END;
+$$ LANGUAGE 'plpgsql';
+
+-- 1.4 - Reabir Serviço [0,5]
+CREATE OR REPLACE PROCEDURE reabrir_servico(p_id_servico integer) AS
+$$
+BEGIN
+    IF EXISTS (SELECT 1 FROM servico WHERE id = p_id_servico AND finalizado IS NOT NULL) THEN
+        UPDATE servico SET finalizado = NULL WHERE id = p_id_servico;
+        INSERT INTO STATUS (situacao, servico_id) VALUES ('Serviço Reaberto', p_id_servico);
+    ELSE
+        RAISE NOTICE 'Serviço não encontrado ou já aberto.';
+    END IF;
+END;
+$$ LANGUAGE 'plpgsql';
+
+-- 1.5 - Registrar status inteligente [0,5]
+CREATE OR REPLACE PROCEDURE registrar_status_inteli(p_servico_id integer, p_mensagem text) AS
+$$
+BEGIN
+    IF EXISTS (SELECT 1 FROM servico WHERE id = p_servico_id) THEN
+        INSERT INTO status(situacao, servico_id) VALUES (p_mensagem, p_servico_id);
+
+        IF (LOWER(p_mensagem) LIKE '%resolvido%') THEN
+            UPDATE servico SET finalizado = current_timestamp WHERE id = p_servico_id AND finalizado is NULL;
+        END IF;
+    ELSE
+        RAISE NOTICE 'Serviço não encontrado.';
+    END IF;
+END;
+$$ LANGUAGE 'plpgsql';
+
+-- 1.6 - Dashboard de Dados [0,5]
+CREATE OR REPLACE FUNCTION dashboard_sistema() RETURNS TABLE (
+    total_servicos integer,
+    servicos_abertos integer,
+    servicos_finalizados integer,
+    tempo_medio_atendimento_horas numeric
+) AS
+$$
+BEGIN
+    RETURN QUERY 
+    SELECT 
+        COUNT(*)::INTEGER AS total_servicos,
+        COUNT(*) FILTER (WHERE finalizado IS NULL)::INTEGER AS servicos_abertos,
+        COUNT(*) FILTER (WHERE finalizado IS NOT NULL)::INTEGER AS servicos_finalizados,
+        ROUND (AVG(EXTRACT(EPOCH FROM (finalizado - data_hora_criacao)) / 3600) FILTER (WHERE finalizado IS NOT NULL), 2) AS tempo_medio_atendimento_horas
+    FROM servico;
 END;
 $$ LANGUAGE 'plpgsql';

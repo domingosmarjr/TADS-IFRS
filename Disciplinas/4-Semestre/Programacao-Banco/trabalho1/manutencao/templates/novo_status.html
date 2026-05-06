@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Registrar Novo Status</h2>
+
+    {% if mensagem %}
+        <p style="color:green;"><b>{{ mensagem }}</b></p>
+    {% endif %}
+
+    <form method="POST">
+        
+        <label>Serviço:</label><br>
+        <select name="servico_id" required>
+            <option value="">Selecione</option>
+            {% for s in servicos %}
+                <option value="{{ s[0] }}">
+                    {{ s[0] }} - {{ s[1] }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <br><br>
+
+        <label>Mensagem:</label><br>
+        <textarea name="mensagem" required></textarea>
+
+        <br><br>
+
+        <button type="submit">Registrar</button>
+    </form>
+
+    <br>
+    <a href="/">Voltar</a>
+</body>
+</html>
